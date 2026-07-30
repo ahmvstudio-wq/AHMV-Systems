@@ -3,22 +3,16 @@ import gsap from 'gsap';
 import ThreeDTopographyCanvas from './ThreeDTopographyCanvas';
 
 export default function HeroSection() {
-  const eyebrowRef = useRef(null);
   const headRef   = useRef(null);
   const subRef    = useRef(null);
   const ctaRef    = useRef(null);
-  const stripRef  = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 0.9 } });
 
-    // Eyebrow
-    gsap.set(eyebrowRef.current, { y: 16, opacity: 0 });
-    tl.to(eyebrowRef.current, { y: 0, opacity: 1, duration: 0.6 });
-
     // Headline — clip-path curtain wipe (NO word split DOM hack)
     gsap.set(headRef.current, { clipPath: 'inset(0 0 100% 0)' });
-    tl.to(headRef.current, { clipPath: 'inset(0 0 0% 0)', duration: 1.1 }, '-=0.3');
+    tl.to(headRef.current, { clipPath: 'inset(0 0 0% 0)', duration: 1.1 });
 
     // Sub
     gsap.set(subRef.current, { y: 20, opacity: 0 });
@@ -28,10 +22,6 @@ export default function HeroSection() {
     gsap.set(ctaRef.current, { y: 16, opacity: 0, scale: 0.97 });
     tl.to(ctaRef.current, { y: 0, opacity: 1, scale: 1, duration: 0.6 }, '-=0.4');
 
-    // Strip
-    gsap.set(stripRef.current, { y: 32, opacity: 0 });
-    tl.to(stripRef.current, { y: 0, opacity: 1, duration: 0.7 }, '-=0.3');
-
     // Continuous floating glow
     gsap.to('.hero-glow', {
       scale: 1.18, opacity: 0.65,
@@ -39,29 +29,6 @@ export default function HeroSection() {
     });
 
   }, []);
-
-  const stripItems = [
-    { 
-      num: '01', 
-      label: 'Lead Flow', 
-      desc: 'Engineered channels for automated client acquisition and CRM sync.' 
-    },
-    { 
-      num: '02', 
-      label: 'Internal OS', 
-      desc: 'Unified operations workspace replacing fragmented trackers.' 
-    },
-    { 
-      num: '03', 
-      label: 'Automation', 
-      desc: 'Background workflows bridging pipelines and outreach sequences.' 
-    },
-    { 
-      num: '04', 
-      label: 'Outcome', 
-      desc: 'Transparent real-time reports mapping operational bottlenecks.' 
-    },
-  ];
 
   return (
     <section
@@ -99,37 +66,6 @@ export default function HeroSection() {
       {/* Content Grid Container */}
       <div className="hero-grid-container">
         
-        {/* Header Bar */}
-        <div ref={eyebrowRef} className="hero-grid-header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-            <span className="hero-pulse-dot" />
-            <span
-              style={{
-                fontFamily: 'var(--font-mono)',
-                fontSize: '11px',
-                fontWeight: 600,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-                color: 'var(--mwg2-black)',
-              }}
-            >
-              Operations Diagnostic & Engineering
-            </span>
-          </div>
-          <span
-            style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '11px',
-              fontWeight: 500,
-              letterSpacing: '0.08em',
-              color: 'var(--mwg2-grey)',
-              textTransform: 'uppercase',
-            }}
-          >
-            India & GCC // Region-01
-          </span>
-        </div>
-
         {/* Grid Body */}
         <div className="hero-grid-body">
           
@@ -159,7 +95,7 @@ export default function HeroSection() {
                 color: 'var(--mwg2-grey)',
                 marginBottom: '36px',
                 fontWeight: 400,
-                maxWidth: '480px',
+                maxWidth: '640px',
               }}
             >
               We start with a diagnostic, not a demo. Our engineering teams deploy modular growth stacks built specifically for enterprise operations.
@@ -193,59 +129,6 @@ export default function HeroSection() {
                 </span>
               </div>
             </div>
-          </div>
-
-          {/* Right Column: Grid Modules */}
-          <div ref={stripRef} className="hero-grid-right">
-            {stripItems.map((item) => (
-              <div
-                key={item.num}
-                className="hero-module-card"
-                data-tilt
-              >
-                <div>
-                  <span
-                    style={{
-                      display: 'block',
-                      fontSize: '11px',
-                      fontFamily: 'var(--font-mono)',
-                      color: 'var(--mwg2-grey)',
-                      marginBottom: '8px',
-                      fontWeight: 600,
-                    }}
-                  >
-                    [{item.num}]
-                  </span>
-                  <span
-                    style={{
-                      display: 'block',
-                      fontSize: '16px',
-                      fontWeight: 600,
-                      color: 'var(--mwg2-black)',
-                      marginBottom: '8px',
-                    }}
-                  >
-                    {item.label}
-                  </span>
-                  <span
-                    style={{
-                      display: 'block',
-                      fontSize: '12px',
-                      color: 'var(--mwg2-grey)',
-                      lineHeight: '1.4',
-                      fontWeight: 400,
-                    }}
-                  >
-                    {item.desc}
-                  </span>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-                  <svg width="14" height="14" viewBox="0 0 12 12" fill="none" style={{ opacity: 0.3, transition: 'all 0.3s cubic-bezier(0.22, 1, 0.36, 1)', color: 'var(--mwg2-black)' }}>
-                    <path d="M1 6H11M11 6L6 1M11 6L6 11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-              </div>
-            ))}
           </div>
 
         </div>

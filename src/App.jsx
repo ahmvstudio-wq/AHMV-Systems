@@ -17,6 +17,7 @@ import Footer from './components/Footer';
 import OnScreenBadge from './components/OnScreenBadge';
 import ServicePageRouter from './components/ServicePages';
 import BubbleCursor from './components/BubbleCursor';
+import AmbientPlayer from './components/AmbientPlayer';
 
 // ── Homepage ──
 function HomePage() {
@@ -72,6 +73,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <BubbleCursor />
+      <AmbientPlayer />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/services/:serviceId" element={<ServiceRoute />} />
