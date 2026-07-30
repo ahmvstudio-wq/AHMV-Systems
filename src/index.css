@@ -1371,3 +1371,38 @@ footer .bottom {
     transform: scaleY(1);
   }
 }
+
+.cursor-ring {
+  animation: cursorSpin 12s linear infinite;
+}
+
+@keyframes cursorSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Shimmery Text Gradient Animation */
+.hero-headline-gradient {
+  background: linear-gradient(
+    135deg,
+    #0A0A0B 0%,
+    #4F4F54 25%,
+    #0A0A0B 50%,
+    #71717A 75%,
+    #0A0A0B 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shineText 8s linear infinite;
+}
+
+@keyframes shineText {
+  to {
+    background-position: 200% center;
+  }
+}

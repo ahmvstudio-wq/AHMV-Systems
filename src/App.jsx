@@ -19,12 +19,63 @@ import ServicePageRouter from './components/ServicePages';
 import BubbleCursor from './components/BubbleCursor';
 import AmbientPlayer from './components/AmbientPlayer';
 
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { playSuccessPulse } from './utils/audio';
+
 // ── Homepage ──
 function HomePage() {
   const [activeVideoId, setActiveVideoId] = useState('MOD-01');
 
   useEffect(() => {
     bootAnimations();
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const sections = [
+      { id: 'hero', code: 'MOD-01' },
+      { id: 'positioning', code: 'MOD-02' },
+      { id: 'different', code: 'MOD-03' },
+      { id: 'process', code: 'MOD-04' },
+      { id: 'services', code: 'MOD-05' },
+      { id: 'about', code: 'MOD-06' },
+      { id: 'founder', code: 'MOD-07' },
+    ];
+
+    const triggers = [];
+    let soundTimeout = null;
+
+    const triggerSectionSound = () => {
+      if (soundTimeout) clearTimeout(soundTimeout);
+      soundTimeout = setTimeout(() => {
+        playSuccessPulse();
+      }, 50);
+    };
+
+    sections.forEach((sec) => {
+      const el = document.getElementById(sec.id);
+      if (el) {
+        const trigger = ScrollTrigger.create({
+          trigger: el,
+          start: 'top 40%',
+          end: 'bottom 40%',
+          onEnter: () => {
+            setActiveVideoId(sec.code);
+            triggerSectionSound();
+          },
+          onEnterBack: () => {
+            setActiveVideoId(sec.code);
+            triggerSectionSound();
+          },
+        });
+        triggers.push(trigger);
+      }
+    });
+
+    return () => {
+      triggers.forEach(t => t.kill());
+      if (soundTimeout) clearTimeout(soundTimeout);
+    };
   }, []);
 
   return (

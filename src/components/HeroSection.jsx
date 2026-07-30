@@ -63,74 +63,65 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Content Grid Container */}
-      <div className="hero-grid-container">
-        
-        {/* Grid Body */}
-        <div className="hero-grid-body">
-          
-          {/* Left Column: Heading and CTAs */}
-          <div className="hero-grid-left">
-            <h2
-              ref={headRef}
-              style={{
-                fontFamily: 'var(--font-grotesk)',
-                fontSize: 'clamp(32px, 4.5vw, 56px)',
-                fontWeight: 500,
-                letterSpacing: '-0.025em',
-                lineHeight: 1.08,
-                color: 'var(--mwg2-black)',
-                marginBottom: '24px',
-                willChange: 'clip-path',
-              }}
-            >
-              We diagnose your business, then build the system that fixes it.
-            </h2>
+      {/* Frameless Content Wrapper */}
+      <div style={{ position: 'relative', zIndex: 2, maxWidth: '840px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
+        <h2
+          ref={headRef}
+          className="hero-headline-gradient"
+          style={{
+            fontFamily: 'var(--font-grotesk)',
+            fontSize: 'clamp(36px, 5.5vw, 76px)',
+            fontWeight: 500,
+            letterSpacing: '-0.025em',
+            lineHeight: 1.05,
+            marginBottom: '28px',
+            willChange: 'clip-path',
+          }}
+        >
+          We diagnose your business, then build the system that fixes it.
+        </h2>
 
-            <p
-              ref={subRef}
-              style={{
-                fontSize: '15px',
-                lineHeight: '1.5',
-                color: 'var(--mwg2-grey)',
-                marginBottom: '36px',
-                fontWeight: 400,
-                maxWidth: '640px',
-              }}
-            >
-              We start with a diagnostic, not a demo. Our engineering teams deploy modular growth stacks built specifically for enterprise operations.
-            </p>
+        <p
+          ref={subRef}
+          style={{
+            fontSize: '16px',
+            lineHeight: '1.6',
+            color: 'var(--mwg2-grey)',
+            marginBottom: '44px',
+            fontWeight: 400,
+            maxWidth: '640px',
+          }}
+        >
+          We start with a diagnostic, not a demo. Our engineering teams deploy modular growth stacks built specifically for enterprise operations.
+        </p>
 
-            <div
-              ref={ctaRef}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '24px',
-                flexWrap: 'wrap',
-              }}
-            >
-              <a
-                href="#diagnostic"
-                className="cta-main cta-main3"
-                style={{ height: '48px', padding: '0 24px', display: 'inline-flex', alignItems: 'center', gap: '8px', borderRadius: '8px' }}
-              >
-                Start Free Diagnostic
-                <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                  <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </a>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-                <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--mwg2-black)', fontFamily: 'var(--font-mono)' }}>
-                  NO PITCH.
-                </span>
-                <span style={{ fontSize: '11px', color: 'var(--mwg2-grey)', fontFamily: 'var(--font-mono)' }}>
-                  NO OBLIGATION.
-                </span>
-              </div>
-            </div>
+        <div
+          ref={ctaRef}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '24px',
+            flexWrap: 'wrap',
+          }}
+        >
+          <a
+            href="#diagnostic"
+            className="cta-main cta-main3"
+            style={{ height: '52px', padding: '0 28px', display: 'inline-flex', alignItems: 'center', gap: '8px', borderRadius: '8px' }}
+          >
+            Start Free Diagnostic
+            <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+              <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </a>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+            <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--mwg2-black)', fontFamily: 'var(--font-mono)' }}>
+              NO PITCH.
+            </span>
+            <span style={{ fontSize: '11px', color: 'var(--mwg2-grey)', fontFamily: 'var(--font-mono)' }}>
+              NO OBLIGATION.
+            </span>
           </div>
-
         </div>
       </div>
     </section>
