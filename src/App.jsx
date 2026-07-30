@@ -14,7 +14,6 @@ import CardsSection from './components/CardsSection';
 import AboutSection from './components/AboutSection';
 import FounderSection from './components/FounderSection';
 import Footer from './components/Footer';
-import OnScreenBadge from './components/OnScreenBadge';
 import ServicePageRouter from './components/ServicePages';
 import BubbleCursor from './components/BubbleCursor';
 import AmbientPlayer from './components/AmbientPlayer';
@@ -107,7 +106,6 @@ function HomePage() {
       </main>
 
       <Footer />
-      <OnScreenBadge activeIndex={activeVideoId} />
     </div>
   );
 }

@@ -2,11 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 
 export default function HeroDiagnosticHUD() {
   const [stats, setStats] = useState({
-    latency: 12,
-    signal: 99.8,
-    temp: 36.4,
-    load: 4.1,
-    nodes: 84,
+    leadResponse: 45,
+    roasElevation: 320,
+    automationRatio: 94.6,
+    hoursSaved: 24.5,
+    pipelines: 4,
   });
 
   const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
@@ -19,11 +19,11 @@ export default function HeroDiagnosticHUD() {
   useEffect(() => {
     const interval = setInterval(() => {
       setStats((prev) => ({
-        latency: Math.floor(8 + Math.random() * 8),
-        signal: +(99.2 + Math.random() * 0.7).toFixed(1),
-        temp: +(35.8 + Math.random() * 1.5).toFixed(1),
-        load: +(3.8 + Math.random() * 1.2).toFixed(1),
-        nodes: prev.nodes + (Math.random() > 0.5 ? 1 : -1),
+        leadResponse: Math.floor(41 + Math.random() * 8),
+        roasElevation: Math.floor(312 + Math.random() * 14),
+        automationRatio: +(94.1 + Math.random() * 0.8).toFixed(1),
+        hoursSaved: +(24.0 + Math.random() * 1.5).toFixed(1),
+        pipelines: 4,
       }));
     }, 1200);
 
@@ -151,28 +151,28 @@ export default function HeroDiagnosticHUD() {
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-          <span>SYSTEM_OS_INIT</span>
-          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>[OK_100%]</span>
+          <span>GROWTH_ENGINE_HEALTH</span>
+          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>[NOMINAL]</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-          <span>SYS_LATENCY_RATE</span>
-          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.latency}ms</span>
+          <span>LEAD_RESPONSE_TIME</span>
+          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.leadResponse}s</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-          <span>DIAG_SIG_STRENGTH</span>
-          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.signal}%</span>
+          <span>MARKETING_ROAS_GAIN</span>
+          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>+{stats.roasElevation}%</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-          <span>CORE_OPER_TEMP</span>
-          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.temp}°C</span>
+          <span>SYSTEM_AUTOMATION</span>
+          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.automationRatio}%</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-          <span>ENGINE_LOAD_INDX</span>
-          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.load}%</span>
+          <span>WEEKLY_HOURS_SAVED</span>
+          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.hoursSaved}h</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span>ACTIVE_STACK_NODES</span>
-          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.nodes.toString().padStart(4, '0')}</span>
+          <span>ACTIVE_REV_PIPELINES</span>
+          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.pipelines.toString().padStart(2, '0')}</span>
         </div>
       </div>
       

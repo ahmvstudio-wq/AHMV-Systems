@@ -22,7 +22,7 @@ const getAudioContext = () => {
   return audioCtx;
 };
 
-// Play subtle high-tech blip on hover
+// Play subtle haptic tick on hover (low frequency, very short decay)
 export const playHoverSound = () => {
   if (!soundEnabled) return;
   try {
@@ -33,23 +33,22 @@ export const playHoverSound = () => {
     const gain = ctx.createGain();
 
     osc.type = 'sine';
-    osc.frequency.setValueAtTime(800, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(1200, ctx.currentTime + 0.04);
+    osc.frequency.setValueAtTime(150, ctx.currentTime); // Low frequency click
 
-    gain.gain.setValueAtTime(0.015, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.04);
+    gain.gain.setValueAtTime(0.006, ctx.currentTime); // Very soft volume
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.012); // Short decay (12ms)
 
     osc.connect(gain);
     gain.connect(ctx.destination);
 
     osc.start();
-    osc.stop(ctx.currentTime + 0.04);
+    osc.stop(ctx.currentTime + 0.012);
   } catch (e) {
-    // Ignore audio autoplay restrictions
+    // Ignore audio restrictions
   }
 };
 
-// Play metallic cyber click on button press
+// Play tactile key click on button press
 export const playClickSound = () => {
   if (!soundEnabled) return;
   try {
@@ -59,24 +58,24 @@ export const playClickSound = () => {
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    osc.type = 'triangle';
-    osc.frequency.setValueAtTime(440, ctx.currentTime);
-    osc.frequency.exponentialRampToValueAtTime(120, ctx.currentTime + 0.08);
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(180, ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(110, ctx.currentTime + 0.018); // Short sweep downwards
 
-    gain.gain.setValueAtTime(0.04, ctx.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+    gain.gain.setValueAtTime(0.012, ctx.currentTime); // Soft volume
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.018); // Short decay (18ms)
 
     osc.connect(gain);
     gain.connect(ctx.destination);
 
     osc.start();
-    osc.stop(ctx.currentTime + 0.08);
+    osc.stop(ctx.currentTime + 0.018);
   } catch (e) {
     // Ignore audio restrictions
   }
 };
 
-// Play diagnostic success pulse
+// Play subtle low-frequency section entry pulse
 export const playSuccessPulse = () => {
   if (!soundEnabled) return;
   try {
@@ -84,26 +83,21 @@ export const playSuccessPulse = () => {
     if (!ctx) return;
 
     const now = ctx.currentTime;
-    const osc1 = ctx.createOscillator();
-    const osc2 = ctx.createOscillator();
+    const osc = ctx.createOscillator();
     const gain = ctx.createGain();
 
-    osc1.type = 'sine';
-    osc2.type = 'sine';
-    osc1.frequency.setValueAtTime(523.25, now); // C5
-    osc2.frequency.setValueAtTime(659.25, now + 0.05); // E5
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(100, now); // Low frequency thud (100Hz)
+    osc.frequency.exponentialRampToValueAtTime(60, now + 0.15); // Sub-bass decay
 
-    gain.gain.setValueAtTime(0.03, now);
-    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+    gain.gain.setValueAtTime(0.015, now); // Low volume
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.15);
 
-    osc1.connect(gain);
-    osc2.connect(gain);
+    osc.connect(gain);
     gain.connect(ctx.destination);
 
-    osc1.start(now);
-    osc1.stop(now + 0.1);
-    osc2.start(now + 0.05);
-    osc2.stop(now + 0.2);
+    osc.start(now);
+    osc.stop(now + 0.15);
   } catch (e) {
     // Ignore
   }
