@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import ThreeDTopographyCanvas from './ThreeDTopographyCanvas';
+import HeroDiagnosticHUD from './HeroDiagnosticHUD';
 
 export default function HeroSection() {
   const headRef   = useRef(null);
@@ -27,6 +28,12 @@ export default function HeroSection() {
       scale: 1.18, opacity: 0.65,
       duration: 4, yoyo: true, repeat: -1, ease: 'sine.inOut',
     });
+
+    // Fade in the Diagnostic HUD slowly
+    gsap.fromTo('.hero-hud-fade', 
+      { opacity: 0, x: 24 }, 
+      { opacity: 1, x: 0, duration: 1.0, ease: 'power3.out', delay: 0.8 }
+    );
 
   }, []);
 
@@ -63,65 +70,96 @@ export default function HeroSection() {
         }}
       />
 
-      {/* Frameless Content Wrapper */}
-      <div style={{ position: 'relative', zIndex: 2, maxWidth: '840px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
-        <h2
-          ref={headRef}
-          className="hero-headline-gradient"
-          style={{
-            fontFamily: 'var(--font-grotesk)',
-            fontSize: 'clamp(36px, 5.5vw, 76px)',
-            fontWeight: 500,
-            letterSpacing: '-0.025em',
-            lineHeight: 1.05,
-            marginBottom: '28px',
-            willChange: 'clip-path',
-          }}
-        >
-          We diagnose your business, then build the system that fixes it.
-        </h2>
-
-        <p
-          ref={subRef}
-          style={{
-            fontSize: '16px',
-            lineHeight: '1.6',
-            color: 'var(--mwg2-grey)',
-            marginBottom: '44px',
-            fontWeight: 400,
-            maxWidth: '640px',
-          }}
-        >
-          We start with a diagnostic, not a demo. Our engineering teams deploy modular growth stacks built specifically for enterprise operations.
-        </p>
-
-        <div
-          ref={ctaRef}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: '24px',
-            flexWrap: 'wrap',
-          }}
-        >
-          <a
-            href="#diagnostic"
-            className="cta-main cta-main3"
-            style={{ height: '52px', padding: '0 28px', display: 'inline-flex', alignItems: 'center', gap: '8px', borderRadius: '8px' }}
+      {/* Two-Column Content Wrapper */}
+      <div 
+        style={{ 
+          position: 'relative', 
+          zIndex: 2, 
+          maxWidth: '1200px', 
+          margin: '0 auto', 
+          width: '100%', 
+          padding: '0 24px',
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: '64px',
+          flexWrap: 'wrap',
+        }}
+      >
+        {/* Left Column: Heading and CTAs */}
+        <div style={{ flex: '1 1 600px', textAlign: 'left' }}>
+          <h2
+            ref={headRef}
+            className="hero-headline-gradient"
+            style={{
+              fontFamily: 'var(--font-grotesk)',
+              fontSize: 'clamp(36px, 5.2vw, 72px)',
+              fontWeight: 500,
+              letterSpacing: '-0.025em',
+              lineHeight: 1.05,
+              marginBottom: '28px',
+              willChange: 'clip-path',
+            }}
           >
-            Start Free Diagnostic
-            <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-              <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-            <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--mwg2-black)', fontFamily: 'var(--font-mono)' }}>
-              NO PITCH.
-            </span>
-            <span style={{ fontSize: '11px', color: 'var(--mwg2-grey)', fontFamily: 'var(--font-mono)' }}>
-              NO OBLIGATION.
-            </span>
+            We diagnose your business, then build the system that fixes it.
+          </h2>
+
+          <p
+            ref={subRef}
+            style={{
+              fontSize: '16px',
+              lineHeight: '1.6',
+              color: 'var(--mwg2-grey)',
+              marginBottom: '44px',
+              fontWeight: 400,
+              maxWidth: '600px',
+            }}
+          >
+            We start with a diagnostic, not a demo. Our engineering teams deploy modular growth stacks built specifically for enterprise operations.
+          </p>
+
+          <div
+            ref={ctaRef}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '24px',
+              flexWrap: 'wrap',
+            }}
+          >
+            <a
+              href="#diagnostic"
+              className="cta-main cta-main3"
+              style={{ height: '52px', padding: '0 28px', display: 'inline-flex', alignItems: 'center', gap: '8px', borderRadius: '8px' }}
+            >
+              Start Free Diagnostic
+              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
+                <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--mwg2-black)', fontFamily: 'var(--font-mono)' }}>
+                NO PITCH.
+              </span>
+              <span style={{ fontSize: '11px', color: 'var(--mwg2-grey)', fontFamily: 'var(--font-mono)' }}>
+                NO OBLIGATION.
+              </span>
+            </div>
           </div>
+        </div>
+
+        {/* Right Column: Generative Diagnostics Scope HUD */}
+        <div 
+          className="hero-hud-fade"
+          style={{ 
+            flex: '0 1 360px', 
+            display: 'flex', 
+            justifyContent: 'center',
+            width: '100%',
+          }}
+        >
+          <HeroDiagnosticHUD />
         </div>
       </div>
     </section>
