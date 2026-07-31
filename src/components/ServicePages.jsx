@@ -574,7 +574,7 @@ function ServicePage({ service }) {
   const [openFaq, setOpenFaq] = useState(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Scroll management handled globally in App.jsx ScrollToTop
 
     // Headline curtain reveal
     if (headRef.current) {

@@ -93,6 +93,7 @@ export default function DifferentSection() {
           <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)', marginBottom: '16px', letterSpacing: '0.06em' }}>
             TYPICAL AGENCY VS AHMV
           </p>
+          <div className="diff-table-wrapper">
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{ borderBottom: '2px solid var(--mwg2-black)' }}>
@@ -109,6 +110,7 @@ export default function DifferentSection() {
               ))}
             </tbody>
           </table>
+          </div>
 
           {/* Displacement tag cloud */}
           <div style={{ marginTop: '28px' }}>

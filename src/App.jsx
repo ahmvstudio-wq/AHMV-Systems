@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams, useLocation, useNavigationType } from 'react-router-dom';
 import { bootAnimations } from './animations';
 
 import Navbar from './components/Navbar';
@@ -117,10 +117,29 @@ function ServiceRoute() {
   return <ServicePageRouter serviceId={serviceId} />;
 }
 
+// ── Scroll Management ──
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  const navType = useNavigationType();
+
+  useEffect(() => {
+    if (navType !== 'POP') {
+      // Small timeout ensures React has finished painting the new route's DOM
+      // and GSAP ScrollTriggers haven't overridden the scroll position.
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 10);
+    }
+  }, [pathname, navType]);
+
+  return null;
+}
+
 // ── Root ──
 export default function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <BubbleCursor />
       <AmbientPlayer />
       <Routes>

@@ -72,6 +72,7 @@ export default function HeroSection() {
 
       {/* Two-Column Content Wrapper */}
       <div 
+        className="hero-content"
         style={{ 
           position: 'relative', 
           zIndex: 2, 
@@ -121,9 +122,11 @@ export default function HeroSection() {
 
           <div
             ref={ctaRef}
+            className="hero-content-cta"
             style={{
               display: 'flex',
               alignItems: 'center',
+              justifyContent: 'inherit',
               gap: '24px',
               flexWrap: 'wrap',
             }}

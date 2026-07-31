@@ -9,7 +9,7 @@ function InfographicPillar1() {
         <span style={{ fontSize: '11px', color: '#FFF', fontWeight: 700 }}>● 24/7 ACTIVE</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+      <div className="info-grid-2" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
         <div style={{ background: '#18181B', padding: '14px', borderRadius: '8px', border: '1px solid #3F3F46' }}>
           <span style={{ fontSize: '10px', color: '#A1A1AA', fontFamily: 'var(--font-mono)' }}>VECTOR A: INBOUND</span>
           <p style={{ fontSize: '13px', fontWeight: 600, color: '#FFF', marginTop: '4px' }}>Meta & Google Lead Ads</p>
@@ -48,7 +48,7 @@ function InfographicPillar2() {
         <span style={{ fontSize: '11px', color: '#FFF', fontWeight: 700 }}>0 FRAGMENTED TOOLS</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', opacity: 0.5 }}>
+      <div className="info-grid-3" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '8px', opacity: 0.5 }}>
         <div style={{ background: '#18181B', padding: '10px', borderRadius: '6px', textAlign: 'center', fontSize: '11px', textDecoration: 'line-through' }}>Salesforce</div>
         <div style={{ background: '#18181B', padding: '10px', borderRadius: '6px', textAlign: 'center', fontSize: '11px', textDecoration: 'line-through' }}>HubSpot</div>
         <div style={{ background: '#18181B', padding: '10px', borderRadius: '6px', textAlign: 'center', fontSize: '11px', textDecoration: 'line-through' }}>Asana</div>
@@ -123,7 +123,7 @@ function InfographicPillar4() {
         <span style={{ fontSize: '11px', color: '#FFF', fontWeight: 700 }}>ZERO HANDOFF LEAKS</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px', fontSize: '10px', textAlign: 'center' }}>
+      <div className="info-grid-4" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '6px', fontSize: '10px', textAlign: 'center' }}>
         <div style={{ background: '#18181B', padding: '10px 4px', borderRadius: '6px', borderTop: '2px solid #FFF' }}>
           <strong>1. Deal Closed</strong>
         </div>
@@ -161,13 +161,13 @@ function InfographicPillar5() {
         <span style={{ fontSize: '11px', color: '#FFF', fontWeight: 700 }}>100% MARGIN RETAINED</span>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr 1.2fr', gap: '10px', alignItems: 'center', textAlign: 'center' }}>
+      <div className="info-grid-3" style={{ display: 'grid', gridTemplateColumns: '1.2fr 0.8fr 1.2fr', gap: '10px', alignItems: 'center', textAlign: 'center' }}>
         <div style={{ background: '#18181B', padding: '14px', borderRadius: '8px', border: '1px solid #3F3F46' }}>
           <strong style={{ fontSize: '12px', color: '#FFF', display: 'block' }}>YOUR AGENCY</strong>
           <span style={{ fontSize: '10px', color: '#A1A1AA' }}>Client Account Management</span>
         </div>
 
-        <div style={{ fontSize: '16px', fontWeight: 800, color: '#FFF' }}>➔</div>
+        <div className="info-grid-arrow" style={{ fontSize: '16px', fontWeight: 800, color: '#FFF' }}>➔</div>
 
         <div style={{ background: '#27272A', padding: '14px', borderRadius: '8px', border: '2px solid #FFF' }}>
           <strong style={{ fontSize: '12px', color: '#FFF', display: 'block' }}>AHMV BACKEND</strong>
