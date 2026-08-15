@@ -24,7 +24,7 @@ export default function Navbar() {
             <li><a href="#hero">HOME</a></li>
             <li><a href="#different">DIFFERENT</a></li>
             <li><a href="#process">PROCESS</a></li>
-            <li><a href="#services">SERVICES <i className="label-s">05</i></a></li>
+            <li><a href="#services">SERVICES <i className="label-s">07</i></a></li>
             <li><a href="#about">ABOUT</a></li>
             <li><a href="#founder">FOUNDER</a></li>
           </ul>
@@ -32,7 +32,7 @@ export default function Navbar() {
 
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           <a href="#diagnostic" className="cta-main cta-main1 desktop-nav" style={{ height: '44px', padding: '0 22px', fontSize: '12px' }}>
-            <span>FREE DIAGNOSTIC</span>
+            <span>FREE ASSESSMENT</span>
             <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
               <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
@@ -65,8 +65,8 @@ export default function Navbar() {
         <ul style={{ display: 'flex', flexDirection: 'column', gap: '16px', fontFamily: 'var(--font-mono)', fontSize: '14px' }}>
           <li><a href="#hero" onClick={() => setMobileMenuOpen(false)}>HOME</a></li>
           <li><a href="#different" onClick={() => setMobileMenuOpen(false)}>DIFFERENT</a></li>
-          <li><a href="#process" onClick={() => setMobileMenuOpen(false)}>DIAGNOSTIC PROCESS</a></li>
-          <li><a href="#services" onClick={() => setMobileMenuOpen(false)}>SERVICES (5 PILLARS)</a></li>
+          <li><a href="#process" onClick={() => setMobileMenuOpen(false)}>OUR PROCESS</a></li>
+          <li><a href="#services" onClick={() => setMobileMenuOpen(false)}>SERVICES (7 PILLARS)</a></li>
           <li><a href="#about" onClick={() => setMobileMenuOpen(false)}>ABOUT AHMV</a></li>
           <li><a href="#founder" onClick={() => setMobileMenuOpen(false)}>FOUNDER STATEMENT</a></li>
         </ul>

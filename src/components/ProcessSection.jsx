@@ -5,7 +5,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const steps = [
-  { num: '01', title: 'Diagnostic Conversation', desc: 'We map how leads move, what breaks, and where time bleeds.' },
+  { num: '01', title: 'Workflow Review',          desc: 'We map how leads move, what breaks, and where time bleeds.' },
   { num: '02', title: 'Honest Fit Verdict',      desc: 'Plain read: what we found and whether we can genuinely help.' },
   { num: '03', title: 'System Design',            desc: 'We architect the fix — pipeline, OS, tools, or custom app.' },
   { num: '04', title: 'Build & Stay',             desc: 'Built in code, trained with your team, accountable after handoff.' },
@@ -74,7 +74,7 @@ export default function ProcessSection() {
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
         <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'rgba(255,255,255,0.35)', marginBottom: '16px' }}>
-          DIAGNOSTIC PROCESS
+          OUR REVIEW PROCESS
         </p>
 
         <h2
@@ -89,11 +89,11 @@ export default function ProcessSection() {
             willChange: 'clip-path',
           }}
         >
-          The diagnostic comes before the proposal. Always.
+          An operational review comes before the proposal. Always.
         </h2>
 
         <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)', maxWidth: '480px', marginBottom: '64px' }}>
-          Not a sales call with a better name.
+          An honest assessment of how your business processes run.
         </p>
 
         {/* Timeline connector */}
@@ -152,7 +152,7 @@ export default function ProcessSection() {
             ))}
           </div>
           <a href="#diagnostic" className="cta-main cta-main1" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', height: '48px', padding: '0 24px' }}>
-            Start Your Diagnostic
+            Request Assessment
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
               <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

@@ -19,14 +19,14 @@ export default function Footer() {
       
       {/* Diagnostic Header */}
       <div style={{ maxWidth: '900px', margin: '0 auto 60px', textAlign: 'center' }}>
-        <p className="label diode pr" style={{ marginBottom: '16px', color: 'var(--mwg2-black)' }}>OPERATIONS DIAGNOSTIC</p>
+        <p className="label diode pr" style={{ marginBottom: '16px', color: 'var(--mwg2-black)' }}>OPERATIONS ASSESSMENT</p>
         
         <h2 className="title-m" style={{ color: 'var(--mwg2-black)', marginBottom: '16px' }}>
-          Start with a free diagnostic. No pitch, no obligation.
+          Start with a free operational review. No sales pitch, no obligation.
         </h2>
 
         <p className="body-s" style={{ color: 'var(--mwg2-dark-grey)', maxWidth: '720px', margin: '0 auto 30px' }}>
-          This is not a sales call. It is a structured conversation to see whether we can genuinely help: and if we can't, we will tell you plainly.
+          This is not a sales call. It is an honest, structured conversation to see whether we can genuinely help: and if we can't, we will tell you plainly.
         </p>
 
         {/* 3 Step Process Box */}
@@ -38,13 +38,13 @@ export default function Footer() {
           </div>
           <div>
             <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)' }}>STEP 2</span>
-            <p style={{ fontSize: '13px', color: 'var(--mwg2-black)', fontWeight: 600, marginTop: '4px' }}>We run the diagnostic</p>
-            <p style={{ fontSize: '12px', color: 'var(--mwg2-dark-grey)', marginTop: '2px' }}>Direct questions about acquisition, tools, workflows, back-office, and leaks.</p>
+            <p style={{ fontSize: '13px', color: 'var(--mwg2-black)', fontWeight: 600, marginTop: '4px' }}>We review workflows</p>
+            <p style={{ fontSize: '12px', color: 'var(--mwg2-dark-grey)', marginTop: '2px' }}>Direct questions about your sales process, pipelines, customer welcoming, and admin delays.</p>
           </div>
           <div>
             <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)' }}>STEP 3</span>
             <p style={{ fontSize: '13px', color: 'var(--mwg2-black)', fontWeight: 600, marginTop: '4px' }}>You get an honest read</p>
-            <p style={{ fontSize: '12px', color: 'var(--mwg2-dark-grey)', marginTop: '2px' }}>A mapped set of fixes if we're a fit, or a direct "not the right team" if we're not.</p>
+            <p style={{ fontSize: '12px', color: 'var(--mwg2-dark-grey)', marginTop: '2px' }}>A mapped set of fixes if we're a fit, or a direct recommendation to another team if we're not.</p>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@ export default function Footer() {
       <div style={{ maxWidth: '680px', margin: '0 auto 80px' }}>
         {submitted ? (
           <div style={{ background: 'var(--mwg2-black)', color: '#FFF', padding: '40px', borderRadius: 'var(--mwg2-radius-m)', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '12px' }}>Diagnostic Request Received</h3>
+            <h3 style={{ fontSize: '24px', fontWeight: 600, marginBottom: '12px' }}>Assessment Request Received</h3>
             <p style={{ fontSize: '15px', color: '#A1A1AA', lineHeight: '1.5' }}>
               We will review your operational bottleneck note personally and respond via Email / WhatsApp within 24 hours.
             </p>
@@ -112,7 +112,7 @@ export default function Footer() {
             </div>
 
             <button type="submit" className="cta-main cta-main3" style={{ height: '54px', width: '100%', justifyContent: 'center', fontSize: '14px' }}>
-              <span>Submit For Free Diagnostic</span>
+              <span>Submit Assessment Request</span>
               <svg width="14" height="14" viewBox="0 0 12 12" fill="none">
                 <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
@@ -137,7 +137,7 @@ export default function Footer() {
             />
           </div>
           <p style={{ fontSize: '13px', color: 'var(--mwg2-dark-grey)', maxWidth: '280px', lineHeight: 1.5 }}>
-            Operations Diagnostic & Growth Engineering Practice. India & GCC.
+            Operations Review & Growth Engineering Practice. India & GCC.
           </p>
         </div>
 
@@ -145,11 +145,13 @@ export default function Footer() {
           <div className="footer-col">
             <h2>Pillars</h2>
             <ul>
-              <li><a href="#services">Acquisition OS</a></li>
-              <li><a href="#services">Localized CRM</a></li>
-              <li><a href="#services">Predictive Intelligence</a></li>
-              <li><a href="#services">Internal Tools</a></li>
-              <li><a href="#services">White-Label Partner</a></li>
+              <li><a href="#services">Revenue & Sales</a></li>
+              <li><a href="#services">Business Operations</a></li>
+              <li><a href="#services">Customer Operations</a></li>
+              <li><a href="#services">Finance Operations</a></li>
+              <li><a href="#services">People Operations</a></li>
+              <li><a href="#services">Management Intelligence</a></li>
+              <li><a href="#services">Technology & Systems</a></li>
             </ul>
           </div>
           <div className="footer-col">
@@ -165,7 +167,7 @@ export default function Footer() {
           <div className="footer-col">
             <h2>Contact</h2>
             <ul>
-              <li><a href="#diagnostic">Free Diagnostic</a></li>
+              <li><a href="#diagnostic">Operations Review</a></li>
               <li><a href="mailto:diagnostic@ahmv.systems">diagnostic@ahmv.systems</a></li>
             </ul>
           </div>

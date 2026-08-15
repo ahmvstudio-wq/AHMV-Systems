@@ -33,7 +33,7 @@ export default function BigTextPin() {
     <section className="h-texts" ref={pinRef} style={{ padding: '120px var(--grid-margin)', background: 'var(--mwg2-black)' }}>
       <div className="title-l text-center" style={{ textTransform: 'none' }}>
         <p className="paragraph" style={{ color: 'var(--mwg2-white)', fontWeight: 600 }}>
-          Five systems.
+          Seven systems.
         </p>
         <p className="paragraph text-g" style={{ color: 'var(--text-grey)', fontWeight: 400 }}>
           One operating brain.

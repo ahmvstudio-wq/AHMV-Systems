@@ -117,7 +117,7 @@ export default function HeroSection() {
               maxWidth: '600px',
             }}
           >
-            We start with a diagnostic, not a demo. Our engineering teams deploy modular growth stacks built specifically for enterprise operations.
+            We start with an operational review, not a demo. Our engineering teams build custom software systems tailored to your business operations.
           </p>
 
           <div
@@ -136,7 +136,7 @@ export default function HeroSection() {
               className="cta-main cta-main3"
               style={{ height: '52px', padding: '0 28px', display: 'inline-flex', alignItems: 'center', gap: '8px', borderRadius: '8px' }}
             >
-              Start Free Diagnostic
+              Schedule Operations Review
               <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
                 <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
