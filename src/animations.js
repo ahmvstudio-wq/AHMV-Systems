@@ -14,7 +14,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 /* ────────────────────────────────────────────────────────────────
-   HEADLINE REVEAL — clip-path curtain wipe upward
+   HEADLINE REVEAL - clip-path curtain wipe upward
    No DOM splitting. One slick motion per headline.
 ──────────────────────────────────────────────────────────────── */
 function revealHeadline(el, delay = 0) {
@@ -38,7 +38,7 @@ function revealHeadline(el, delay = 0) {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   FADE SLIDE — body text, labels, CTAs
+   FADE SLIDE - body text, labels, CTAs
 ──────────────────────────────────────────────────────────────── */
 function revealFade(el, { y = 32, duration = 0.85, delay = 0, blur = true } = {}) {
   if (!el) return;
@@ -58,7 +58,7 @@ function revealFade(el, { y = 32, duration = 0.85, delay = 0, blur = true } = {}
 }
 
 /* ────────────────────────────────────────────────────────────────
-   STAGGER GRID — children fly in with 3D depth
+   STAGGER GRID - children fly in with 3D depth
 ──────────────────────────────────────────────────────────────── */
 function revealGrid(container, { stagger = 0.12, y = 60, rotX = 18 } = {}) {
   if (!container) return;
@@ -87,7 +87,7 @@ function revealGrid(container, { stagger = 0.12, y = 60, rotX = 18 } = {}) {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   SCRUB PARALLAX — element scrolls at different speed
+   SCRUB PARALLAX - element scrolls at different speed
 ──────────────────────────────────────────────────────────────── */
 function parallax(el, yStart = -60, yEnd = 60) {
   if (!el) return;
@@ -107,7 +107,7 @@ function parallax(el, yStart = -60, yEnd = 60) {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   3D CARD TILT — real physics feel
+   3D CARD TILT - real physics feel
 ──────────────────────────────────────────────────────────────── */
 function applyTilt(el, maxDeg = 12) {
   if (!el) return;
@@ -142,7 +142,7 @@ function applyTilt(el, maxDeg = 12) {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   MAGNETIC BUTTON — cursor pulled toward center
+   MAGNETIC BUTTON - cursor pulled toward center
 ──────────────────────────────────────────────────────────────── */
 function applyMagnetic(el, pull = 0.38) {
   if (!el) return;
@@ -158,7 +158,7 @@ function applyMagnetic(el, pull = 0.38) {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   COUNTER — animated number on scroll
+   COUNTER - animated number on scroll
 ──────────────────────────────────────────────────────────────── */
 function animateCounter(el) {
   if (!el) return;
@@ -188,7 +188,7 @@ function animateCounter(el) {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   CURSOR SPOTLIGHT — subtle radial glow follows cursor
+   CURSOR SPOTLIGHT - subtle radial glow follows cursor
 ──────────────────────────────────────────────────────────────── */
 function initCursorSpotlight() {
   const spot = document.createElement('div');
@@ -208,7 +208,7 @@ function initCursorSpotlight() {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   HORIZONTAL SCROLL MARQUEE — auto-loop
+   HORIZONTAL SCROLL MARQUEE - auto-loop
 ──────────────────────────────────────────────────────────────── */
 function initMarquees() {
   document.querySelectorAll('[data-marquee]').forEach((track) => {
@@ -226,7 +226,7 @@ function initMarquees() {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   HORIZONTAL PINNED SECTION — scrub-scroll
+   HORIZONTAL PINNED SECTION - scrub-scroll
 ──────────────────────────────────────────────────────────────── */
 function initHorizontalScrub(wrapper, track) {
   if (!wrapper || !track) return;
@@ -249,7 +249,7 @@ function initHorizontalScrub(wrapper, track) {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   SECTION BACKGROUND SCRUB — dark sections shift hue subtly
+   SECTION BACKGROUND SCRUB - dark sections shift hue subtly
 ──────────────────────────────────────────────────────────────── */
 function initSectionScrubs() {
   document.querySelectorAll('[data-scrub-bg]').forEach((el) => {
@@ -268,11 +268,11 @@ function initSectionScrubs() {
 }
 
 /* ────────────────────────────────────────────────────────────────
-   BOOT — wire everything after React renders
+   BOOT - wire everything after React renders
 ──────────────────────────────────────────────────────────────── */
 export function bootAnimations() {
   setTimeout(() => {
-    // Headlines — clip-path curtain (NO word-split)
+    // Headlines - clip-path curtain (NO word-split)
     document.querySelectorAll('.title-l').forEach((el) => revealHeadline(el, 0.05));
     document.querySelectorAll('.title-m').forEach((el) => revealHeadline(el, 0));
     document.querySelectorAll('.title-s').forEach((el) => revealHeadline(el, 0));

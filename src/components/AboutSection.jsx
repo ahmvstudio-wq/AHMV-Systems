@@ -5,10 +5,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const pillars = [
-  { label: 'Client acquisition systems',  sub: 'Omnichannel pipelines & conversational OS' },
-  { label: 'Internal operating systems',  sub: 'Localized CRMs, internal tools & back-office OS' },
-  { label: 'Predictive intelligence',     sub: 'Behavior-driven tracking & automated follow-ups' },
-  { label: 'Strategic partnerships',      sub: 'White-label infrastructure for partner agencies' },
+  { label: 'Lead & Sales Systems',         sub: 'Automated booking, fast follow-ups & organized contacts' },
+  { label: 'Internal Team Portals',        sub: 'Custom dashboards, project trackers & company databases' },
+  { label: 'Workflow Automations',         sub: 'Eliminate hours of repetitive manual data entry' },
+  { label: 'Dedicated Engineering Support', sub: 'Direct partnership to build, maintain & scale your tools' },
 ];
 
 export default function AboutSection() {
@@ -53,13 +53,13 @@ export default function AboutSection() {
     <section
       id="about"
       ref={sectionRef}
-      className="sec-black pr"
-      style={{ padding: '100px 40px', background: 'var(--mwg2-black)' }}
+      className="sec-white pr"
+      style={{ padding: '100px 40px', background: '#FFFFFF', color: '#0A0A0B' }}
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'start' }} className="about-split">
 
         <div>
-          <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'rgba(255,255,255,0.35)', marginBottom: '16px' }}>ABOUT AHMV SYSTEMS</p>
+          <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'var(--mwg2-grey)', marginBottom: '16px' }}>ABOUT AHMV SYSTEMS</p>
           <h2
             className="about-head"
             style={{
@@ -67,48 +67,51 @@ export default function AboutSection() {
               fontWeight: 500,
               letterSpacing: '-0.025em',
               lineHeight: 1.06,
+              color: '#0A0A0B',
               marginBottom: '20px',
               willChange: 'clip-path',
             }}
           >
-            Understand the business before recommending anything.
+            Technology should make work simpler, not add more headache.
           </h2>
-          <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.45)', marginBottom: '32px', lineHeight: 1.6 }}>
-            One rule: diagnose first, then decide whether you need AI, automation, or just a better process.
+          <p style={{ fontSize: '15px', color: '#52525B', marginBottom: '32px', lineHeight: 1.6 }}>
+            We help growing businesses fix broken processes, eliminate manual busywork, and build clean software their teams actually enjoy using.
           </p>
 
           <div
             className="footprint-card"
             data-tilt
             style={{
-              background: '#18181B',
-              borderLeft: '3px solid rgba(255,255,255,0.6)',
+              background: '#F4F4F5',
+              border: '1px solid #E4E4E7',
+              borderLeft: '3px solid #0A0A0B',
               borderRadius: '0 12px 12px 0',
               padding: '20px 24px',
-              color: 'rgba(255,255,255,0.7)',
+              color: '#27272A',
               fontSize: '13px',
               lineHeight: 1.6,
               transformStyle: 'preserve-3d',
+              boxShadow: '0 4px 20px rgba(0,0,0,0.02)',
             }}
           >
-            <strong style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', display: 'block', marginBottom: '6px', color: 'rgba(255,255,255,0.35)', letterSpacing: '0.06em' }}>
-              OPERATING FOOTPRINT
+            <strong style={{ fontFamily: 'var(--font-mono)', fontSize: '10px', display: 'block', marginBottom: '6px', color: 'var(--mwg2-grey)', letterSpacing: '0.06em' }}>
+              WHERE WE WORK
             </strong>
-            India operations underwrite a pivot to Oman, Dubai, and US corporate markets.
+            Serving growing businesses across India, Oman, UAE, and international markets.
           </div>
         </div>
 
         <div>
-          <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'rgba(255,255,255,0.35)', marginBottom: '20px' }}>WE OPERATE AT THE INTERSECTION OF</p>
-          <div className="about-pillars" style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+          <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'var(--mwg2-grey)', marginBottom: '20px' }}>CORE AREAS WE BUILD FOR</p>
+          <div className="about-pillars" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {pillars.map((p, i) => (
               <div
                 key={i}
                 className="about-pillar"
                 data-tilt
                 style={{
-                  background: '#18181B',
-                  border: '1px solid rgba(255,255,255,0.07)',
+                  background: '#F4F4F5',
+                  border: '1px solid #E4E4E7',
                   borderRadius: '10px',
                   padding: '18px 20px',
                   display: 'flex',
@@ -118,14 +121,14 @@ export default function AboutSection() {
                   transformStyle: 'preserve-3d',
                   transition: 'background 0.2s ease',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#1F1F23'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#18181B'; }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#EAEAEB'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#F4F4F5'; }}
               >
                 <div>
-                  <div style={{ fontSize: '14px', fontWeight: 500, color: '#FFF', marginBottom: '3px' }}>{p.label}</div>
-                  <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.35)', fontFamily: 'var(--font-mono)' }}>{p.sub}</div>
+                  <div style={{ fontSize: '14px', fontWeight: 500, color: '#0A0A0B', marginBottom: '3px' }}>{p.label}</div>
+                  <div style={{ fontSize: '11px', color: 'var(--mwg2-grey)', fontFamily: 'var(--font-mono)' }}>{p.sub}</div>
                 </div>
-                <span style={{ color: 'rgba(255,255,255,0.25)', fontSize: '16px' }}>→</span>
+                <span style={{ color: '#71717A', fontSize: '16px' }}>→</span>
               </div>
             ))}
           </div>

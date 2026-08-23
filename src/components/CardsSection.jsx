@@ -18,7 +18,7 @@ const fiveComponents = [
   {
     num: '03',
     title: 'Speed & Custom Fit',
-    text: 'Get the speed of off-the-shelf software paired with the exact fit of custom development — built and deployed in 14 days.'
+    text: 'Get the speed of off-the-shelf software paired with the exact fit of custom development - built and deployed in 14 days.'
   },
   {
     num: '04',
@@ -52,12 +52,12 @@ export default function CardsSection() {
   }, []);
 
   return (
-    <section className="h-cards wrapper" ref={sectionRef} style={{ padding: '80px 40px', background: 'var(--mwg2-black)' }}>
+    <section className="h-cards wrapper sec-white" ref={sectionRef} style={{ padding: '80px 40px', background: '#FAF9F6' }}>
       <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-        <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'rgba(255,255,255,0.4)', marginBottom: '16px', textTransform: 'uppercase' }}>
+        <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'var(--mwg2-grey)', marginBottom: '16px', textTransform: 'uppercase' }}>
           STRATEGIC ADVANTAGE
         </p>
-        <h2 style={{ fontSize: '28px', fontWeight: 500, color: '#FFF', marginBottom: '40px' }}>
+        <h2 style={{ fontSize: '28px', fontWeight: 500, color: '#0A0A0B', marginBottom: '40px' }}>
           Why Businesses Switch To AHMV Systems
         </h2>
 
@@ -68,24 +68,25 @@ export default function CardsSection() {
               className="card-circle"
               data-tilt
               style={{
-                background: '#18181B',
-                border: '1px solid #27272A',
+                background: '#FFFFFF',
+                border: '1px solid #E4E4E7',
                 borderRadius: '16px',
                 padding: '28px',
-                color: '#FFF',
+                color: '#0A0A0B',
                 transformStyle: 'preserve-3d',
+                boxShadow: '0 4px 20px rgba(0,0,0,0.03)',
                 transition: 'border-color 0.25s ease',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.4)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#27272A'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = '#0A0A0B'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = '#E4E4E7'; }}
             >
-              <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'rgba(255,255,255,0.4)', marginBottom: '12px', fontWeight: 600 }}>
+              <div style={{ fontSize: '12px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)', marginBottom: '12px', fontWeight: 600 }}>
                 {card.num}
               </div>
-              <h3 style={{ fontSize: '17px', fontWeight: 500, color: '#FFF', marginBottom: '10px', lineHeight: 1.3 }}>
+              <h3 style={{ fontSize: '17px', fontWeight: 500, color: '#0A0A0B', marginBottom: '10px', lineHeight: 1.3 }}>
                 {card.title}
               </h3>
-              <p style={{ fontSize: '13px', color: 'rgba(255,255,255,0.5)', lineHeight: 1.5 }}>
+              <p style={{ fontSize: '13px', color: '#52525B', lineHeight: 1.5 }}>
                 {card.text}
               </p>
             </div>

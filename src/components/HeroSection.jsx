@@ -3,7 +3,7 @@ import gsap from 'gsap';
 import ThreeDTopographyCanvas from './ThreeDTopographyCanvas';
 import HeroDiagnosticHUD from './HeroDiagnosticHUD';
 
-export default function HeroSection() {
+export default function HeroSection({ onOpenAudit }) {
   const headRef   = useRef(null);
   const subRef    = useRef(null);
   const ctaRef    = useRef(null);
@@ -11,7 +11,7 @@ export default function HeroSection() {
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 0.9 } });
 
-    // Headline — clip-path curtain wipe (NO word split DOM hack)
+    // Headline - clip-path curtain wipe (NO word split DOM hack)
     gsap.set(headRef.current, { clipPath: 'inset(0 0 100% 0)' });
     tl.to(headRef.current, { clipPath: 'inset(0 0 0% 0)', duration: 1.1 });
 
@@ -22,12 +22,6 @@ export default function HeroSection() {
     // CTA
     gsap.set(ctaRef.current, { y: 16, opacity: 0, scale: 0.97 });
     tl.to(ctaRef.current, { y: 0, opacity: 1, scale: 1, duration: 0.6 }, '-=0.4');
-
-    // Continuous floating glow
-    gsap.to('.hero-glow', {
-      scale: 1.18, opacity: 0.65,
-      duration: 4, yoyo: true, repeat: -1, ease: 'sine.inOut',
-    });
 
     // Fade in the Diagnostic HUD slowly
     gsap.fromTo('.hero-hud-fade', 
@@ -40,37 +34,23 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="sec-white pr"
+      className="hero-fullscreen"
       style={{
         position: 'relative',
         minHeight: '100vh',
         display: 'flex',
-        flexDirection: 'column',
+        alignItems: 'center',
         justifyContent: 'center',
-        padding: '120px 24px 80px',
+        padding: '120px 0 60px',
         overflow: 'hidden',
+        background: '#FFFFFF',
+        color: '#0A0A0B',
       }}
     >
-      {/* Animated topography canvas */}
+      {/* 3D Topography Canvas Background */}
       <ThreeDTopographyCanvas />
 
-      {/* Radial glow blob */}
-      <div
-        className="hero-glow"
-        style={{
-          position: 'absolute',
-          width: '700px',
-          height: '700px',
-          borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0,0,0,0.04) 0%, transparent 70%)',
-          top: '50%', left: '50%',
-          transform: 'translate(-50%,-50%)',
-          pointerEvents: 'none',
-          zIndex: 0,
-        }}
-      />
-
-      {/* Two-Column Content Wrapper */}
+      {/* Grid Content Container */}
       <div 
         className="hero-content"
         style={{ 
@@ -90,34 +70,39 @@ export default function HeroSection() {
       >
         {/* Left Column: Heading and CTAs */}
         <div style={{ flex: '1 1 600px', textAlign: 'left' }}>
+          <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'var(--mwg2-grey)', marginBottom: '14px' }}>
+            AHMV Systems · Operations engineering
+          </p>
+
           <h2
             ref={headRef}
             className="hero-headline-gradient"
             style={{
               fontFamily: 'var(--font-grotesk)',
-              fontSize: 'clamp(36px, 5.2vw, 72px)',
-              fontWeight: 500,
-              letterSpacing: '-0.025em',
-              lineHeight: 1.05,
-              marginBottom: '28px',
+              fontSize: 'clamp(30px, 4.2vw, 54px)',
+              fontWeight: 400,
+              letterSpacing: '-0.02em',
+              lineHeight: 1.1,
+              marginBottom: '20px',
               willChange: 'clip-path',
             }}
           >
-            We diagnose your business, then build the system that fixes it.
+            Businesses don't scale. <br />
+            <span>Systems do.</span>
           </h2>
 
           <p
             ref={subRef}
             style={{
-              fontSize: '16px',
-              lineHeight: '1.6',
+              fontSize: '15px',
+              lineHeight: '1.65',
               color: 'var(--mwg2-grey)',
-              marginBottom: '44px',
+              marginBottom: '36px',
               fontWeight: 400,
-              maxWidth: '600px',
+              maxWidth: '580px',
             }}
           >
-            We start with an operational review, not a demo. Our engineering teams build custom software systems tailored to your business operations.
+            We diagnose your business first, then build the sales, customer, finance, and AI workforce systems that fix what's actually broken - no pitch, no chatbot bolted onto a broken process.
           </p>
 
           <div
@@ -127,28 +112,74 @@ export default function HeroSection() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'inherit',
-              gap: '24px',
+              gap: '14px',
               flexWrap: 'wrap',
+              marginBottom: '36px',
             }}
           >
             <a
-              href="#diagnostic"
+              href="#contact"
               className="cta-main cta-main3"
-              style={{ height: '52px', padding: '0 28px', display: 'inline-flex', alignItems: 'center', gap: '8px', borderRadius: '8px' }}
+              style={{ height: '50px', padding: '0 26px', display: 'inline-flex', alignItems: 'center', borderRadius: '8px' }}
             >
-              Schedule Operations Review
-              <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                <path d="M1 11L11 1M11 1H3M11 1V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+              Book a Free Operations Review
             </a>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
-              <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--mwg2-black)', fontFamily: 'var(--font-mono)' }}>
-                NO PITCH.
-              </span>
-              <span style={{ fontSize: '11px', color: 'var(--mwg2-grey)', fontFamily: 'var(--font-mono)' }}>
-                NO OBLIGATION.
-              </span>
-            </div>
+
+            {onOpenAudit && (
+              <button
+                onClick={onOpenAudit}
+                style={{
+                  height: '50px',
+                  padding: '0 20px',
+                  fontSize: '12px',
+                  fontFamily: 'var(--font-mono)',
+                  fontWeight: 600,
+                  border: '1px solid #0A0A0B',
+                  borderRadius: '8px',
+                  background: '#FFFFFF',
+                  color: '#0A0A0B',
+                  cursor: 'pointer',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                Take 60s Audit
+              </button>
+            )}
+
+            <a
+              href="#systems"
+              className="cta-main cta-main2"
+              style={{ height: '50px', padding: '0 20px', display: 'inline-flex', alignItems: 'center', borderRadius: '8px', border: '1px solid #E4E4E7' }}
+            >
+              See what we build
+            </a>
+          </div>
+
+          {/* Quick Category Pills */}
+          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+            {['Sales & Revenue', 'Customer Ops', 'Finance', 'AI Workforce', 'Custom Builds'].map((pill, i) => (
+              <a
+                key={i}
+                href="#systems"
+                style={{
+                  fontSize: '11px',
+                  fontFamily: 'var(--font-mono)',
+                  padding: '6px 12px',
+                  borderRadius: '6px',
+                  background: '#F4F4F5',
+                  border: '1px solid #E4E4E7',
+                  color: '#27272A',
+                  textDecoration: 'none',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = '#0A0A0B'; e.currentTarget.style.color = '#FFFFFF'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#F4F4F5'; e.currentTarget.style.color = '#27272A'; }}
+              >
+                {pill}
+              </a>
+            ))}
           </div>
         </div>
 

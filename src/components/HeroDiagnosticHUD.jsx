@@ -151,19 +151,15 @@ export default function HeroDiagnosticHUD() {
         }}
       >
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-          <span>GROWTH_ENGINE_HEALTH</span>
-          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>[NOMINAL]</span>
+          <span>SYSTEM_STATUS</span>
+          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>[HEALTHY]</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
           <span>LEAD_RESPONSE_TIME</span>
           <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.leadResponse}s</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-          <span>MARKETING_ROAS_GAIN</span>
-          <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>+{stats.roasElevation}%</span>
-        </div>
-        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
-          <span>SYSTEM_AUTOMATION</span>
+          <span>TASKS_AUTOMATED</span>
           <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.automationRatio}%</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '4px' }}>
@@ -171,7 +167,7 @@ export default function HeroDiagnosticHUD() {
           <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.hoursSaved}h</span>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <span>ACTIVE_REV_PIPELINES</span>
+          <span>ACTIVE_SYSTEMS</span>
           <span style={{ color: 'var(--mwg2-black)', fontWeight: 600 }}>{stats.pipelines.toString().padStart(2, '0')}</span>
         </div>
       </div>

@@ -5,17 +5,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const rows = [
-  { agency: 'Strategy decks & vanity metrics', ahmv: 'Internal operating systems & revenue engines' },
-  { agency: 'Adds more SaaS tools', ahmv: 'Removes bloat via custom localized systems' },
-  { agency: 'Optimizes for campaigns', ahmv: 'Optimizes for leak-free, deterministic outcomes' },
-  { agency: 'Competes on price', ahmv: 'Competes on structural impact & IP' },
+  { agency: 'Decks, meetings & vague advice', ahmv: 'Working custom software & automated workflows' },
+  { agency: 'Adds more expensive subscriptions', ahmv: 'Replaces cluttered apps with one clean system' },
+  { agency: 'Leaves your team to figure out setup', ahmv: 'Builds, tests, and trains your team' },
+  { agency: 'Charges high recurring agency retainers', ahmv: 'Delivers reliable software you own forever' },
 ];
 
 const stats = [
-  { label: 'SaaS tools replaced', value: 100, suffix: '%' },
+  { label: 'Custom fit to your team', value: 100, suffix: '%' },
   { label: 'Lead response speed', value: 60, suffix: 's' },
-  { label: 'Avg. time to deploy', value: 14, suffix: 'd' },
-  { label: 'Ops work eliminated', value: 80, suffix: '%' },
+  { label: 'Typical deployment time', value: 14, suffix: 'd' },
+  { label: 'Admin work eliminated', value: 80, suffix: '%' },
 ];
 
 export default function DifferentSection() {
@@ -35,7 +35,7 @@ export default function DifferentSection() {
       });
     }
 
-    // Table rows — alternate slide from left/right
+    // Table rows - alternate slide from left/right
     const tRows = sectionRef.current.querySelectorAll('.diff-row');
     tRows.forEach((row, i) => gsap.set(row, { x: i % 2 === 0 ? -50 : 50, opacity: 0 }));
     ScrollTrigger.create({
@@ -44,7 +44,7 @@ export default function DifferentSection() {
       once: true,
     });
 
-    // Stat cards — 3D rotateY flip
+    // Stat cards - 3D rotateY flip
     const statCards = sectionRef.current.querySelectorAll('.stat-card');
     gsap.set(statCards, { rotateY: -70, opacity: 0, transformPerspective: 700 });
     ScrollTrigger.create({
@@ -78,11 +78,11 @@ export default function DifferentSection() {
           willChange: 'clip-path',
         }}
       >
-        The difference is not the AI. It is the level we work at.
+        The difference is how we work.
       </h2>
 
       <p style={{ fontSize: '15px', color: 'var(--mwg2-grey)', maxWidth: '560px', marginBottom: '64px' }}>
-        We operate at the layer below campaigns — where systems move leads, work, data, and decisions.
+        We don't just sell advice or another software subscription. We build the actual tools that run your business.
       </p>
 
       {/* 50/50 */}
@@ -97,8 +97,8 @@ export default function DifferentSection() {
           <table style={{ width: '100%', borderCollapse: 'collapse' }}>
             <thead>
               <tr style={{ borderBottom: '2px solid var(--mwg2-black)' }}>
-                <th style={{ padding: '10px 6px', fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)', textAlign: 'left', width: '50%' }}>TYPICAL</th>
-                <th style={{ padding: '10px 6px', fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-black)', textAlign: 'left', width: '50%' }}>AHMV</th>
+                <th style={{ padding: '10px 6px', fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)', textAlign: 'left', width: '50%' }}>TYPICAL AGENCY</th>
+                <th style={{ padding: '10px 6px', fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-black)', textAlign: 'left', width: '50%' }}>AHMV SYSTEMS</th>
               </tr>
             </thead>
             <tbody>
@@ -114,9 +114,9 @@ export default function DifferentSection() {
 
           {/* Displacement tag cloud */}
           <div style={{ marginTop: '28px' }}>
-            <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)', marginBottom: '12px' }}>SOFTWARE WE REPLACE</p>
+            <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)', marginBottom: '12px' }}>APPS WE REPLACE</p>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {['Salesforce', 'HubSpot', 'Asana', 'Monday', 'Sheets'].map((t, i) => (
+              {['Salesforce', 'HubSpot', 'Asana', 'Monday', 'Spreadsheets'].map((t, i) => (
                 <span key={i} style={{
                   fontSize: '12px', padding: '5px 12px',
                   border: '1px solid rgba(0,0,0,0.12)', borderRadius: '4px',
@@ -128,7 +128,7 @@ export default function DifferentSection() {
                 fontSize: '12px', padding: '5px 12px', borderRadius: '4px',
                 background: 'var(--mwg2-black)', color: '#FFF',
                 fontFamily: 'var(--font-mono)', fontWeight: 600,
-              }}>ONE OS</span>
+              }}>ONE SIMPLE SYSTEM</span>
             </div>
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function DifferentSection() {
         {/* Stats */}
         <div>
           <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)', marginBottom: '16px', letterSpacing: '0.06em' }}>
-            REAL SYSTEM OUTCOMES
+            WHAT YOU GET
           </p>
           <div className="stat-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
             {stats.map((s, i) => (

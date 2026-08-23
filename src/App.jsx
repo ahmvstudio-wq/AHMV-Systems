@@ -3,20 +3,21 @@ import { BrowserRouter, Routes, Route, useParams, useLocation, useNavigationType
 import { bootAnimations } from './animations';
 
 import Navbar from './components/Navbar';
-import AwwwardsBanner from './components/AwwwardsBanner';
 import HeroSection from './components/HeroSection';
-import LearnSection from './components/LearnSection';
-import DifferentSection from './components/DifferentSection';
+import TypographicProblem from './components/TypographicProblem';
+import ProblemSection from './components/ProblemSection';
+import InteractiveSystemGraph from './components/InteractiveSystemGraph';
+import RoiCalculator from './components/RoiCalculator';
 import ProcessSection from './components/ProcessSection';
-import BigTextPin from './components/BigTextPin';
-import FeaturesSection from './components/FeaturesSection';
-import CardsSection from './components/CardsSection';
-import AboutSection from './components/AboutSection';
+import PricingSection from './components/PricingSection';
 import FounderSection from './components/FounderSection';
+import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
+import ProductsSection from './components/ProductsSection';
+import ProductDetailPage from './components/ProductDetailPage';
+import DiagnosticAuditModal from './components/DiagnosticAuditModal';
 import ServicePageRouter from './components/ServicePages';
 import BubbleCursor from './components/BubbleCursor';
-import AmbientPlayer from './components/AmbientPlayer';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -25,6 +26,7 @@ import { playSuccessPulse } from './utils/audio';
 // ── Homepage ──
 function HomePage() {
   const [activeVideoId, setActiveVideoId] = useState('MOD-01');
+  const [auditModalOpen, setAuditModalOpen] = useState(false);
 
   useEffect(() => {
     bootAnimations();
@@ -33,12 +35,14 @@ function HomePage() {
 
     const sections = [
       { id: 'hero', code: 'MOD-01' },
-      { id: 'positioning', code: 'MOD-02' },
-      { id: 'different', code: 'MOD-03' },
-      { id: 'process', code: 'MOD-04' },
-      { id: 'services', code: 'MOD-05' },
-      { id: 'about', code: 'MOD-06' },
+      { id: 'problem', code: 'MOD-02' },
+      { id: 'roi-calculator', code: 'MOD-03' },
+      { id: 'products', code: 'MOD-04' },
+      { id: 'process', code: 'MOD-05' },
+      { id: 'pricing', code: 'MOD-06' },
       { id: 'founder', code: 'MOD-07' },
+      { id: 'faq', code: 'MOD-08' },
+      { id: 'contact', code: 'MOD-09' },
     ];
 
     const triggers = [];
@@ -79,33 +83,45 @@ function HomePage() {
 
   return (
     <div className="homepage-wrapper">
-      <AwwwardsBanner />
-      <Navbar />
+      <Navbar onOpenAudit={() => setAuditModalOpen(true)} />
 
       <main style={{ position: 'relative', zIndex: 1 }}>
-        {/* HOME */}
-        <HeroSection onActiveVideoChange={(id) => setActiveVideoId(id)} />
-        <LearnSection />
+        {/* HERO */}
+        <HeroSection onActiveVideoChange={(id) => setActiveVideoId(id)} onOpenAudit={() => setAuditModalOpen(true)} />
 
-        {/* WHY AHMV */}
-        <DifferentSection />
+        {/* TYPOGRAPHIC PROBLEM STATEMENT */}
+        <TypographicProblem />
 
-        {/* PROCESS */}
+        {/* THE PROBLEM (DATA/STATS) */}
+        <ProblemSection />
+
+        {/* ROI & OPERATIONS LEAK CALCULATOR */}
+        <RoiCalculator />
+
+        {/* SERVICES & PRODUCTS - 4 VERTICALS, 10 SYSTEMS */}
+        <ProductsSection onOpenAudit={() => setAuditModalOpen(true)} />
+
+        {/* METHODOLOGY / PROCESS */}
         <ProcessSection />
 
-        {/* SERVICES */}
-        <BigTextPin />
-        <FeaturesSection />
-        <CardsSection />
+        {/* PRICING MODEL */}
+        <PricingSection />
 
-        {/* ABOUT */}
-        <AboutSection />
-
-        {/* FOUNDER */}
+        {/* FOUNDER STATEMENT */}
         <FounderSection />
+
+        {/* FAQ */}
+        <FaqSection />
+
+        {/* LIVE INTERACTIVE DATA PIPELINE GRAPH */}
+        <InteractiveSystemGraph />
       </main>
 
+      {/* OPERATIONS ASSESSMENT & FOOTER */}
       <Footer />
+
+      {/* 60s DIAGNOSTIC AUDIT MODAL */}
+      <DiagnosticAuditModal isOpen={auditModalOpen} onClose={() => setAuditModalOpen(false)} />
     </div>
   );
 }
@@ -124,8 +140,6 @@ function ScrollToTop() {
 
   useEffect(() => {
     if (navType !== 'POP') {
-      // Small timeout ensures React has finished painting the new route's DOM
-      // and GSAP ScrollTriggers haven't overridden the scroll position.
       setTimeout(() => {
         window.scrollTo(0, 0);
       }, 10);
@@ -141,9 +155,9 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <BubbleCursor />
-      <AmbientPlayer />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/products/:productId" element={<ProductDetailPage />} />
         <Route path="/services/:serviceId" element={<ServiceRoute />} />
       </Routes>
     </BrowserRouter>
