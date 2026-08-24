@@ -9,7 +9,6 @@ import ProblemSection from './components/ProblemSection';
 import InteractiveSystemGraph from './components/InteractiveSystemGraph';
 import RoiCalculator from './components/RoiCalculator';
 import ProcessSection from './components/ProcessSection';
-import PricingSection from './components/PricingSection';
 import FounderSection from './components/FounderSection';
 import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
@@ -18,13 +17,14 @@ import ProductDetailPage from './components/ProductDetailPage';
 import DiagnosticAuditModal from './components/DiagnosticAuditModal';
 import ServicePageRouter from './components/ServicePages';
 import BubbleCursor from './components/BubbleCursor';
+import DiagnosticFlow from './components/DiagnosticFlow';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { playSuccessPulse } from './utils/audio';
 
 // ── Homepage ──
-function HomePage() {
+function HomePage({ diagnosticData }) {
   const [activeVideoId, setActiveVideoId] = useState('MOD-01');
   const [auditModalOpen, setAuditModalOpen] = useState(false);
 
@@ -39,7 +39,6 @@ function HomePage() {
       { id: 'roi-calculator', code: 'MOD-03' },
       { id: 'products', code: 'MOD-04' },
       { id: 'process', code: 'MOD-05' },
-      { id: 'pricing', code: 'MOD-06' },
       { id: 'founder', code: 'MOD-07' },
       { id: 'faq', code: 'MOD-08' },
       { id: 'contact', code: 'MOD-09' },
@@ -87,10 +86,10 @@ function HomePage() {
 
       <main style={{ position: 'relative', zIndex: 1 }}>
         {/* HERO */}
-        <HeroSection onActiveVideoChange={(id) => setActiveVideoId(id)} onOpenAudit={() => setAuditModalOpen(true)} />
+        <HeroSection diagnosticData={diagnosticData} onActiveVideoChange={(id) => setActiveVideoId(id)} onOpenAudit={() => setAuditModalOpen(true)} />
 
         {/* TYPOGRAPHIC PROBLEM STATEMENT */}
-        <TypographicProblem />
+        <TypographicProblem diagnosticData={diagnosticData} />
 
         {/* THE PROBLEM (DATA/STATS) */}
         <ProblemSection />
@@ -103,9 +102,6 @@ function HomePage() {
 
         {/* METHODOLOGY / PROCESS */}
         <ProcessSection />
-
-        {/* PRICING MODEL */}
-        <PricingSection />
 
         {/* FOUNDER STATEMENT */}
         <FounderSection />
@@ -151,15 +147,30 @@ function ScrollToTop() {
 
 // ── Root ──
 export default function App() {
+  const [diagnosticData, setDiagnosticData] = useState(null);
+  const [diagnosticComplete, setDiagnosticComplete] = useState(false);
+
+  const handleDiagnosticComplete = (data) => {
+    if (data) {
+      setDiagnosticData(data);
+    }
+    setDiagnosticComplete(true);
+  };
+
   return (
     <BrowserRouter>
       <ScrollToTop />
       <BubbleCursor />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/products/:productId" element={<ProductDetailPage />} />
-        <Route path="/services/:serviceId" element={<ServiceRoute />} />
-      </Routes>
+      
+      {!diagnosticComplete ? (
+        <DiagnosticFlow onComplete={handleDiagnosticComplete} />
+      ) : (
+        <Routes>
+          <Route path="/" element={<HomePage diagnosticData={diagnosticData} />} />
+          <Route path="/products/:productId" element={<ProductDetailPage />} />
+          <Route path="/services/:serviceId" element={<ServiceRoute />} />
+        </Routes>
+      )}
     </BrowserRouter>
   );
 }

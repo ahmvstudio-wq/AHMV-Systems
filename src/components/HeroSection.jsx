@@ -3,10 +3,21 @@ import gsap from 'gsap';
 import ThreeDTopographyCanvas from './ThreeDTopographyCanvas';
 import HeroDiagnosticHUD from './HeroDiagnosticHUD';
 
-export default function HeroSection({ onOpenAudit }) {
+export default function HeroSection({ onOpenAudit, diagnosticData }) {
   const headRef   = useRef(null);
   const subRef    = useRef(null);
   const ctaRef    = useRef(null);
+
+  const bottleneck = diagnosticData?.bottleneck || 'ops';
+  let headlineStart = "Businesses don't scale.";
+  
+  if (bottleneck === 'leads') {
+    headlineStart = "Referrals don't scale.";
+  } else if (bottleneck === 'sales') {
+    headlineStart = "Conversations don't scale.";
+  } else if (bottleneck === 'retention') {
+    headlineStart = "Hustle doesn't scale.";
+  }
 
   useEffect(() => {
     const tl = gsap.timeline({ defaults: { ease: 'expo.out', duration: 0.9 } });
@@ -27,6 +38,12 @@ export default function HeroSection({ onOpenAudit }) {
     gsap.fromTo('.hero-hud-fade', 
       { opacity: 0, x: 24 }, 
       { opacity: 1, x: 0, duration: 1.0, ease: 'power3.out', delay: 0.8 }
+    );
+
+    // Fade in scroll indicator
+    gsap.fromTo('.hero-scroll-indicator',
+      { opacity: 0, y: -10 },
+      { opacity: 1, y: 0, duration: 1.0, ease: 'power3.out', delay: 1.2 }
     );
 
   }, []);
@@ -56,7 +73,7 @@ export default function HeroSection({ onOpenAudit }) {
         style={{ 
           position: 'relative', 
           zIndex: 2, 
-          maxWidth: '1200px', 
+          maxWidth: '1440px', 
           margin: '0 auto', 
           width: '100%', 
           padding: '0 24px',
@@ -69,41 +86,29 @@ export default function HeroSection({ onOpenAudit }) {
         }}
       >
         {/* Left Column: Heading and CTAs */}
-        <div style={{ flex: '1 1 600px', textAlign: 'left' }}>
-          <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'var(--mwg2-grey)', marginBottom: '14px' }}>
+        <div className="mobile-hero-text-col" style={{ flex: '1 1 540px', textAlign: 'left' }}>
+          <p className="mobile-hero-eyebrow" style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', letterSpacing: '0.06em', color: 'var(--mwg2-grey)', marginBottom: '14px' }}>
             AHMV Systems · Operations engineering
           </p>
 
           <h2
             ref={headRef}
-            className="hero-headline-gradient"
+            className="mobile-hero-headline"
             style={{
               fontFamily: 'var(--font-grotesk)',
-              fontSize: 'clamp(30px, 4.2vw, 54px)',
-              fontWeight: 400,
-              letterSpacing: '-0.02em',
-              lineHeight: 1.1,
-              marginBottom: '20px',
+              fontSize: 'clamp(36px, 5vw, 64px)',
+              fontWeight: 500,
+              letterSpacing: '-0.04em',
+              lineHeight: 1.05,
+              marginBottom: '24px',
               willChange: 'clip-path',
             }}
           >
-            Businesses don't scale. <br />
-            <span>Systems do.</span>
+            <span style={{ display: 'block', color: '#18181B', whiteSpace: 'nowrap' }}>{headlineStart}</span>
+            <span style={{ display: 'block', color: '#71717A', whiteSpace: 'nowrap' }}>Systems do.</span>
           </h2>
 
-          <p
-            ref={subRef}
-            style={{
-              fontSize: '15px',
-              lineHeight: '1.65',
-              color: 'var(--mwg2-grey)',
-              marginBottom: '36px',
-              fontWeight: 400,
-              maxWidth: '580px',
-            }}
-          >
-            We diagnose your business first, then build the sales, customer, finance, and AI workforce systems that fix what's actually broken - no pitch, no chatbot bolted onto a broken process.
-          </p>
+
 
           <div
             ref={ctaRef}
@@ -120,7 +125,7 @@ export default function HeroSection({ onOpenAudit }) {
             <a
               href="#contact"
               className="cta-main cta-main3"
-              style={{ height: '50px', padding: '0 26px', display: 'inline-flex', alignItems: 'center', borderRadius: '8px' }}
+              style={{ height: '46px', padding: '0 24px', fontSize: '13px', display: 'inline-flex', alignItems: 'center', borderRadius: '8px' }}
             >
               Book a Free Operations Review
             </a>
@@ -129,7 +134,7 @@ export default function HeroSection({ onOpenAudit }) {
               <button
                 onClick={onOpenAudit}
                 style={{
-                  height: '50px',
+                  height: '46px',
                   padding: '0 20px',
                   fontSize: '12px',
                   fontFamily: 'var(--font-mono)',
@@ -151,43 +156,20 @@ export default function HeroSection({ onOpenAudit }) {
             <a
               href="#systems"
               className="cta-main cta-main2"
-              style={{ height: '50px', padding: '0 20px', display: 'inline-flex', alignItems: 'center', borderRadius: '8px', border: '1px solid #E4E4E7' }}
+              style={{ height: '46px', padding: '0 20px', fontSize: '13px', display: 'inline-flex', alignItems: 'center', borderRadius: '8px', border: '1px solid #E4E4E7' }}
             >
               See what we build
             </a>
           </div>
 
-          {/* Quick Category Pills */}
-          <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-            {['Sales & Revenue', 'Customer Ops', 'Finance', 'AI Workforce', 'Custom Builds'].map((pill, i) => (
-              <a
-                key={i}
-                href="#systems"
-                style={{
-                  fontSize: '11px',
-                  fontFamily: 'var(--font-mono)',
-                  padding: '6px 12px',
-                  borderRadius: '6px',
-                  background: '#F4F4F5',
-                  border: '1px solid #E4E4E7',
-                  color: '#27272A',
-                  textDecoration: 'none',
-                  transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = '#0A0A0B'; e.currentTarget.style.color = '#FFFFFF'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = '#F4F4F5'; e.currentTarget.style.color = '#27272A'; }}
-              >
-                {pill}
-              </a>
-            ))}
-          </div>
+
         </div>
 
         {/* Right Column: Generative Diagnostics Scope HUD */}
         <div 
           className="hero-hud-fade"
           style={{ 
-            flex: '0 1 360px', 
+            flex: '0 1 320px', 
             display: 'flex', 
             justifyContent: 'center',
             width: '100%',
@@ -196,6 +178,64 @@ export default function HeroSection({ onOpenAudit }) {
           <HeroDiagnosticHUD />
         </div>
       </div>
+      
+      {/* Scroll Indicator */}
+      <div className="hero-scroll-indicator" style={{
+        position: 'absolute',
+        bottom: '40px',
+        left: '50%',
+        transform: 'translateX(-50%)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        gap: '12px',
+        opacity: 0,
+        zIndex: 10
+      }}>
+        <span style={{ fontSize: '10px', fontFamily: 'var(--font-mono)', color: '#A1A1AA', letterSpacing: '0.1em' }}>EXPLORE</span>
+        <div style={{ width: '1px', height: '40px', background: 'linear-gradient(to bottom, #D4D4D8, transparent)' }} />
+      </div>
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hero-fullscreen {
+            padding: 0 !important;
+          }
+          .hero-content {
+            gap: 0 !important;
+            padding: 0 16px !important;
+            justify-content: center !important;
+          }
+          .mobile-hero-text-col {
+            flex: 1 1 100% !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+          }
+          .mobile-hero-headline {
+            font-size: 8.2vw !important;
+            line-height: 1.1 !important;
+            margin-bottom: 0 !important;
+            text-align: center !important;
+          }
+          .mobile-hero-eyebrow {
+            display: inline-block !important;
+            padding: 6px 14px;
+            border-radius: 100px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(8px);
+            margin-bottom: 32px !important;
+          }
+          .hero-content-cta {
+            display: none !important;
+          }
+          .hero-hud-fade {
+            display: none !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

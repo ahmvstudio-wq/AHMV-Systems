@@ -4,8 +4,40 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function TypographicProblem() {
+export default function TypographicProblem({ diagnosticData }) {
   const containerRef = useRef(null);
+  
+  const bottleneck = diagnosticData?.bottleneck || 'ops';
+
+  let line1 = "You are running a growing business.";
+
+  let line2 = "But underneath, it's held together by Google Sheets, WhatsApp, and memory.";
+
+  let painPoints = [
+    "Leads are lost due to manual follow-up.",
+    "Fulfillment is chaotic.",
+    "Your team is stuck doing data entry."
+  ];
+
+  if (bottleneck === 'leads') {
+    painPoints = [
+      "Your pipeline is dry and unpredictable.",
+      "Cold outreach feels like a waste of time.",
+      "You rely entirely on referrals to survive."
+    ];
+  } else if (bottleneck === 'sales') {
+    painPoints = [
+      "Leads fall through the cracks.",
+      "Follow-ups are manual and inconsistent.",
+      "Close rates are lower than they should be."
+    ];
+  } else if (bottleneck === 'retention') {
+    painPoints = [
+      "Client onboarding is a mess.",
+      "Customer support takes up all your time.",
+      "You're losing clients faster than you acquire them."
+    ];
+  }
   
   useEffect(() => {
     if (!containerRef.current) return;
@@ -28,7 +60,7 @@ export default function TypographicProblem() {
       },
       once: true
     });
-  }, []);
+  }, [bottleneck]); // re-run animation setup if data changes (though it shouldn't once loaded)
 
   return (
     <section 
@@ -52,7 +84,7 @@ export default function TypographicProblem() {
           marginBottom: '24px',
           color: '#A1A1AA'
         }}>
-          You are running a 7-figure business.
+          {line1}
         </p>
         
         <p className="typo-line" style={{ 
@@ -67,15 +99,11 @@ export default function TypographicProblem() {
         </p>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '80px' }}>
-          <p className="typo-line" style={{ fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 400, color: '#52525B', margin: 0, letterSpacing: '-0.02em' }}>
-            Leads are lost due to manual follow-up.
-          </p>
-          <p className="typo-line" style={{ fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 400, color: '#52525B', margin: 0, letterSpacing: '-0.02em' }}>
-            Fulfillment is chaotic.
-          </p>
-          <p className="typo-line" style={{ fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 400, color: '#52525B', margin: 0, letterSpacing: '-0.02em' }}>
-            Your team is stuck doing data entry.
-          </p>
+          {painPoints.map((point, index) => (
+            <p key={index} className="typo-line" style={{ fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 400, color: '#52525B', margin: 0, letterSpacing: '-0.02em' }}>
+              {point}
+            </p>
+          ))}
         </div>
 
         <p className="typo-line" style={{ 
