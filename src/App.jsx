@@ -130,15 +130,31 @@ function ServiceRoute() {
 }
 
 // ── Scroll Management ──
-function ScrollToTop() {
+const scrollPositions = {};
+
+function ScrollManager() {
   const { pathname } = useLocation();
   const navType = useNavigationType();
 
+  // Save scroll position continuously for the current path
   useEffect(() => {
-    if (navType !== 'POP') {
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-      }, 10);
+    const handleScroll = () => {
+      scrollPositions[pathname] = window.scrollY;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [pathname]);
+
+  // Restore or reset scroll on navigation
+  useEffect(() => {
+    // If user clicks browser back, OR if they navigate back to home, restore position.
+    if (navType === 'POP' || pathname === '/') {
+      const savedPosition = scrollPositions[pathname] || 0;
+      setTimeout(() => window.scrollTo(0, savedPosition), 10);
+      setTimeout(() => window.scrollTo(0, savedPosition), 150); // Fallback after render
+    } else {
+      // Navigating to a new page (e.g. a service page) goes to the absolute top
+      setTimeout(() => window.scrollTo(0, 0), 10);
     }
   }, [pathname, navType]);
 
@@ -159,7 +175,7 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <ScrollToTop />
+      <ScrollManager />
       <BubbleCursor />
       
       {!diagnosticComplete ? (

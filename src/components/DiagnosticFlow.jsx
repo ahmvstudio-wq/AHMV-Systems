@@ -133,11 +133,12 @@ export default function DiagnosticFlow({ onComplete }) {
 
   const introTexts = [
     "We Don't Sell Software. We Fix Operational Problems.",
-    "So before you explore AHMV Systems, tell us where your business hurts.",
-    "A few questions.",
-    "A clearer picture.",
-    "A better system.",
-    "If you want to fix something, start here."
+    "Before you explore AHMV Systems, tell us where your business hurts.",
+    [
+      "A clearer picture.",
+      "A better system.",
+      "Start here."
+    ]
   ];
 
   const containerRef = useRef(null);
@@ -151,6 +152,7 @@ export default function DiagnosticFlow({ onComplete }) {
   useEffect(() => {
     if (phase === 'intro' && introTextRef.current) {
       if (introStep < introTexts.length) {
+        const isMultiLine = Array.isArray(introTexts[introStep]);
         const tl = gsap.timeline({
           onComplete: () => {
             if (introStep < introTexts.length - 1) {
@@ -161,13 +163,29 @@ export default function DiagnosticFlow({ onComplete }) {
           }
         });
         
-        tl.fromTo(introTextRef.current, 
-          { opacity: 0, filter: 'blur(10px)', scale: 0.95 },
-          { opacity: 1, filter: 'blur(0px)', scale: 1, duration: 0.6, ease: 'power2.out' }
-        )
-        .to(introTextRef.current, 
-          { opacity: 0, filter: 'blur(10px)', scale: 1.05, duration: 0.5, ease: 'power2.in', delay: 1.0 }
-        );
+        if (isMultiLine) {
+          const lines = introTextRef.current.querySelectorAll('.intro-line');
+          gsap.set(introTextRef.current, { opacity: 1, filter: 'blur(0px)', scale: 1 });
+          
+          tl.fromTo(lines,
+            { opacity: 0, filter: 'blur(15px)', y: 20 },
+            { opacity: 1, filter: 'blur(0px)', y: 0, duration: 1.2, stagger: 0.9, ease: 'power2.out' }
+          )
+          .to(introTextRef.current, 
+            { opacity: 0, filter: 'blur(10px)', scale: 1.05, duration: 0.8, ease: 'power2.in', delay: 1.5 }
+          );
+        } else {
+          const inDuration = introStep === 0 ? 0.7 : 1.0;
+          const outDelay = introStep === 0 ? 1.2 : 1.8;
+          
+          tl.fromTo(introTextRef.current, 
+            { opacity: 0, filter: 'blur(15px)', scale: 0.95 },
+            { opacity: 1, filter: 'blur(0px)', scale: 1, duration: inDuration, ease: 'power2.out' }
+          )
+          .to(introTextRef.current, 
+            { opacity: 0, filter: 'blur(10px)', scale: 1.05, duration: 0.7, ease: 'power2.in', delay: outDelay }
+          );
+        }
       }
     }
   }, [phase, introStep]);
@@ -318,9 +336,16 @@ export default function DiagnosticFlow({ onComplete }) {
         {/* ── INTRO SCREEN ── */}
         {phase === 'intro' && (
           <div style={styles.introInner}>
-             <h1 ref={introTextRef} style={styles.introText}>
-                {introTexts[introStep]}
-             </h1>
+            <h2 ref={introTextRef} style={styles.introText}>
+              {Array.isArray(introTexts[introStep]) 
+                ? introTexts[introStep].map((line, i) => (
+                    <span key={i} className="intro-line" style={{ display: 'block', margin: '4px 0' }}>
+                      {line}
+                    </span>
+                  ))
+                : introTexts[introStep]
+              }
+            </h2>
           </div>
         )}
 
@@ -474,14 +499,19 @@ export default function DiagnosticFlow({ onComplete }) {
       <style>{`
         @media (max-width: 640px) {
           .df-question-text {
-            font-size: 28px !important;
+            font-size: 26px !important;
+            margin-bottom: 24px !important;
           }
           .df-options-grid {
             grid-template-columns: 1fr !important;
-            gap: 10px !important;
+            gap: 8px !important;
+            max-height: 50vh;
+            overflow-y: auto;
+            padding-right: 4px;
           }
           .df-option-card {
-            padding: 16px 20px !important;
+            padding: 12px 16px !important;
+            gap: 6px !important;
           }
           .df-welcome-title {
             font-size: 32px !important;
