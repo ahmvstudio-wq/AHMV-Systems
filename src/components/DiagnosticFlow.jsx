@@ -133,7 +133,6 @@ export default function DiagnosticFlow({ onComplete }) {
 
   const introTexts = [
     "We Don't Sell Software. We Fix Operational Problems.",
-    "Before you explore AHMV Systems, tell us where your business hurts.",
     [
       "A clearer picture.",
       "A better system.",
