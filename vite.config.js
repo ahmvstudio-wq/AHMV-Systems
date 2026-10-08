@@ -11,6 +11,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         privacyPolicy: resolve(__dirname, 'privacy-policy/index.html'),
         termsOfService: resolve(__dirname, 'terms-of-service/index.html'),
+        apps: resolve(__dirname, 'apps/index.html'),
       },
     },
   },

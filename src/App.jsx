@@ -20,6 +20,7 @@ import BubbleCursor from './components/BubbleCursor';
 import DiagnosticFlow from './components/DiagnosticFlow';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import ClaudeWorkflowSection from './components/ClaudeWorkflowSection';
 
 // ── 3 Independent Enterprise Software Suites ──
 import AppLauncher from './apps/AppLauncher';
@@ -113,6 +114,9 @@ function HomePage({ diagnosticData }) {
 
         {/* SERVICES & PRODUCTS - 4 VERTICALS, 10 SYSTEMS */}
         <ProductsSection onOpenAudit={() => setAuditModalOpen(true)} />
+
+        {/* ANTHROPIC & CLAUDE WORKFLOW ARCHITECTURE */}
+        <ClaudeWorkflowSection />
 
         {/* METHODOLOGY / PROCESS */}
         <ProcessSection />
