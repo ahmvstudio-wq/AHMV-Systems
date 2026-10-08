@@ -1,13 +1,63 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+const questions = [
+  {
+    key: 'businessType',
+    title: 'What kind of business are you running?',
+    options: [
+      'B2B services',
+      'B2C services',
+      'E-commerce',
+      'Real estate',
+      'Professional services',
+      'Other',
+    ],
+  },
+  {
+    key: 'teamSize',
+    title: 'How big is the team today?',
+    options: [
+      '1 to 10 people',
+      '11 to 25',
+      '26 to 50',
+      '51 to 100',
+      '101 to 250',
+      '250+',
+    ],
+  },
+  {
+    key: 'lossArea',
+    title: 'Where is the business losing the most time, money or opportunities?',
+    options: [
+      'Lead generation or follow-up',
+      'Customer handling',
+      'Internal operations',
+      'Finance or invoicing',
+      'Manual data entry',
+      'Disconnected software',
+      'Digital growth',
+      'Not sure yet',
+    ],
+  },
+  {
+    key: 'improvementGoal',
+    title: 'What are you trying to improve?',
+    options: [
+      'More qualified opportunities',
+      'Faster response and follow-up',
+      'Less manual work',
+      'Better visibility into operations',
+      'Better financial control',
+      'A new digital system',
+      'Something else',
+    ],
+  },
+];
+
 export default function DiagnosticAuditModal({ isOpen, onClose }) {
-  const [step, setStep] = useState(1);
-  const [answers, setAnswers] = useState({
-    bottleneck: '',
-    stackSize: '',
-    targetOutcome: '',
-  });
+  const [step, setStep] = useState(0);
+  const [answers, setAnswers] = useState({});
   const [completed, setCompleted] = useState(false);
 
   if (!isOpen) return null;
@@ -15,7 +65,7 @@ export default function DiagnosticAuditModal({ isOpen, onClose }) {
   const handleSelect = (key, val) => {
     const next = { ...answers, [key]: val };
     setAnswers(next);
-    if (step < 3) {
+    if (step < questions.length - 1) {
       setStep(step + 1);
     } else {
       setCompleted(true);
@@ -23,11 +73,13 @@ export default function DiagnosticAuditModal({ isOpen, onClose }) {
   };
 
   const reset = () => {
-    setStep(1);
-    setAnswers({ bottleneck: '', stackSize: '', targetOutcome: '' });
+    setStep(0);
+    setAnswers({});
     setCompleted(false);
     onClose();
   };
+
+  const currentQ = questions[step];
 
   return (
     <div
@@ -79,7 +131,7 @@ export default function DiagnosticAuditModal({ isOpen, onClose }) {
           <div>
             {/* Step indicator */}
             <div style={{ display: 'flex', gap: '6px', marginBottom: '24px' }}>
-              {[1, 2, 3].map((s) => (
+              {questions.map((_, s) => (
                 <div
                   key={s}
                   style={{
@@ -94,195 +146,119 @@ export default function DiagnosticAuditModal({ isOpen, onClose }) {
             </div>
 
             <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)', marginBottom: '8px' }}>
-              QUESTION 0{step} OF 03
+              QUESTION 0{step + 1} OF 0{questions.length}
             </p>
 
-            {step === 1 && (
-              <div>
-                <h3 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '20px', lineHeight: 1.25 }}>
-                  Where is your biggest operational leak today?
-                </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  {[
-                    'Inbound leads going cold in DMs or slow follow-ups',
-                    'Support & project delivery running on memory without a portal',
-                    'Invoicing is manual and cash flow numbers lag behind',
-                    'Paying for 5+ SaaS tools that do not talk to each other',
-                  ].map((opt, i) => (
-                    <button
-                      key={i}
-                      onClick={() => handleSelect('bottleneck', opt)}
-                      style={{
-                        padding: '14px 18px',
-                        borderRadius: '10px',
-                        border: '1px solid #E4E4E7',
-                        background: '#F4F4F5',
-                        textAlign: 'left',
-                        fontSize: '13px',
-                        fontWeight: 500,
-                        color: '#0A0A0B',
-                        cursor: 'pointer',
-                        transition: 'all 0.15s ease',
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = '#0A0A0B'; e.currentTarget.style.color = '#FFFFFF'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = '#F4F4F5'; e.currentTarget.style.color = '#0A0A0B'; }}
-                    >
-                      {opt}
-                    </button>
-                  ))}
-                </div>
+            <div>
+              <h3 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '20px', lineHeight: 1.25 }}>
+                {currentQ.title}
+              </h3>
+              <div style={{ display: 'grid', gridTemplateColumns: currentQ.options.length > 4 ? '1fr 1fr' : '1fr', gap: '10px' }}>
+                {currentQ.options.map((opt, i) => (
+                  <button
+                    key={i}
+                    onClick={() => handleSelect(currentQ.key, opt)}
+                    style={{
+                      padding: '14px 18px',
+                      borderRadius: '10px',
+                      border: '1px solid #E4E4E7',
+                      background: '#F4F4F5',
+                      textAlign: 'left',
+                      fontSize: '13px',
+                      fontWeight: 500,
+                      color: '#0A0A0B',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s ease',
+                    }}
+                    onMouseEnter={(e) => { e.currentTarget.style.background = '#0A0A0B'; e.currentTarget.style.color = '#FFFFFF'; }}
+                    onMouseLeave={(e) => { e.currentTarget.style.background = '#F4F4F5'; e.currentTarget.style.color = '#0A0A0B'; }}
+                  >
+                    {opt}
+                  </button>
+                ))}
               </div>
-            )}
-
-            {step === 2 && (
-              <div>
-                <h3 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '20px', lineHeight: 1.25 }}>
-                  How many disconnected tools is your team managing?
-                </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  {[
-                    '1 to 3 tools (mostly spreadsheets & WhatsApp)',
-                    '4 to 7 tools (CRM, task board, email software, billing app)',
-                    '8+ complex subscriptions with overlapping features',
-                    'Custom internal mess built by previous contractors',
-                  ].map((opt, i) => (
-                    <button
-                      key={i}
-                      onClick={() => handleSelect('stackSize', opt)}
-                      style={{
-                        padding: '14px 18px',
-                        borderRadius: '10px',
-                        border: '1px solid #E4E4E7',
-                        background: '#F4F4F5',
-                        textAlign: 'left',
-                        fontSize: '13px',
-                        fontWeight: 500,
-                        color: '#0A0A0B',
-                        cursor: 'pointer',
-                        transition: 'all 0.15s ease',
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = '#0A0A0B'; e.currentTarget.style.color = '#FFFFFF'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = '#F4F4F5'; e.currentTarget.style.color = '#0A0A0B'; }}
-                    >
-                      {opt}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {step === 3 && (
-              <div>
-                <h3 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '20px', lineHeight: 1.25 }}>
-                  What outcome would create the highest leverage?
-                </h3>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                  {[
-                    'Automated 24/7 lead qualification & instant calendar booking',
-                    'Centralized client portal with live delivery milestones',
-                    'Automated invoicing and receivable reconciliation',
-                    'One unified custom internal operating system that replaces all bloat',
-                  ].map((opt, i) => (
-                    <button
-                      key={i}
-                      onClick={() => handleSelect('targetOutcome', opt)}
-                      style={{
-                        padding: '14px 18px',
-                        borderRadius: '10px',
-                        border: '1px solid #E4E4E7',
-                        background: '#F4F4F5',
-                        textAlign: 'left',
-                        fontSize: '13px',
-                        fontWeight: 500,
-                        color: '#0A0A0B',
-                        cursor: 'pointer',
-                        transition: 'all 0.15s ease',
-                      }}
-                      onMouseEnter={(e) => { e.currentTarget.style.background = '#0A0A0B'; e.currentTarget.style.color = '#FFFFFF'; }}
-                      onMouseLeave={(e) => { e.currentTarget.style.background = '#F4F4F5'; e.currentTarget.style.color = '#0A0A0B'; }}
-                    >
-                      {opt}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
+            </div>
           </div>
         ) : (
           /* Audit Results Screen */
-          (() => {
-            const getRecommendedService = () => {
-              const out = answers.targetOutcome || '';
-              if (out.includes('lead') || out.includes('booking')) return { id: 'sales-revenue', name: 'Sales & Revenue Vertical', url: '/services/sales-revenue', bottleneck: 'Lead Pipeline Decay' };
-              if (out.includes('invoicing')) return { id: 'ai-finance', name: 'AI Finance Vertical', url: '/services/ai-finance', bottleneck: 'Manual Financial Processing' };
-              if (out.includes('custom')) return { id: 'custom-software', name: 'Custom Architecture', url: '/services/custom-software', bottleneck: 'Fragmented Tech Stack' };
-              return { id: 'operations-automation', name: 'Operations Vertical', url: '/services/operations-automation', bottleneck: 'Manual Ops Debt' };
-            };
-            const rec = getRecommendedService();
-            return (
-              <div>
-                <div style={{ textAlign: 'center', marginBottom: '24px' }}>
-                  <div
-                    style={{
-                      width: '56px',
-                      height: '56px',
-                      borderRadius: '50%',
-                      background: '#0A0A0B',
-                      color: '#FFFFFF',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      fontSize: '22px',
-                      margin: '0 auto 16px',
-                    }}
-                  >
-                    ✓
-                  </div>
-                  <h3 style={{ fontSize: '22px', fontWeight: 600, marginBottom: '8px' }}>
-                    Diagnostic Blueprint Ready
-                  </h3>
-                  <p style={{ fontSize: '13px', color: '#52525B', lineHeight: 1.5 }}>
-                    Based on your inputs, your business exhibits <strong>High Operational Friction</strong> that can be fixed within 14 days.
-                  </p>
-                </div>
-
-                <div style={{ background: '#F4F4F5', border: '1px solid #E4E4E7', borderRadius: '12px', padding: '18px 20px', marginBottom: '24px', fontSize: '12px', fontFamily: 'var(--font-mono)' }}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <span style={{ color: 'var(--mwg2-grey)' }}>IDENTIFIED BOTTLENECK:</span>
-                    <span style={{ fontWeight: 600, color: '#DC2626' }}>{rec.bottleneck}</span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-                    <span style={{ color: 'var(--mwg2-grey)' }}>PRESCRIBED SYSTEM:</span>
-                    <span style={{ fontWeight: 600, color: '#0A0A0B' }}>{rec.name}</span>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-                    <span style={{ color: 'var(--mwg2-grey)' }}>ESTIMATED DEPLOY TIME:</span>
-                    <span style={{ fontWeight: 600, color: '#10B981' }}>14 Days</span>
-                  </div>
-                </div>
-
-                <Link
-                  to={rec.url}
-                  onClick={reset}
-                  className="cta-main cta-main1"
-                  style={{
-                    height: '50px',
-                    width: '100%',
-                    justifyContent: 'center',
-                    fontSize: '13px',
-                    background: '#0A0A0B',
-                    color: '#FFFFFF',
-                    borderRadius: '8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    textDecoration: 'none'
-                  }}
-                >
-                  <span>View {rec.name} Details</span>
-                </Link>
+          <div>
+            <div style={{ textAlign: 'center', marginBottom: '24px' }}>
+              <div
+                style={{
+                  width: '56px',
+                  height: '56px',
+                  borderRadius: '50%',
+                  background: '#0A0A0B',
+                  color: '#FFFFFF',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '22px',
+                  margin: '0 auto 16px',
+                }}
+              >
+                ✓
               </div>
-            );
-          })()
+              <h3 style={{ fontSize: '22px', fontWeight: 600, marginBottom: '10px', lineHeight: 1.25 }}>
+                Based on your answers, an Operations Review is probably worth doing.
+              </h3>
+              <p style={{ fontSize: '14px', color: '#52525B', lineHeight: 1.5, maxWidth: '440px', margin: '0 auto' }}>
+                We'll read your answers before the call, so we go straight to the actual problem instead of starting from zero.
+              </p>
+            </div>
+
+            <div style={{ background: '#F4F4F5', border: '1px solid #E4E4E7', borderRadius: '12px', padding: '18px 20px', marginBottom: '24px', fontSize: '12px', fontFamily: 'var(--font-mono)' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <span style={{ color: 'var(--mwg2-grey)' }}>PRIMARY FOCUS:</span>
+                <span style={{ fontWeight: 600, color: '#0A0A0B' }}>{answers.lossArea || 'Operations'}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+                <span style={{ color: 'var(--mwg2-grey)' }}>TARGET OUTCOME:</span>
+                <span style={{ fontWeight: 600, color: '#0A0A0B' }}>{answers.improvementGoal || 'Process Clarity'}</span>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <span style={{ color: 'var(--mwg2-grey)' }}>ESTIMATED TIME:</span>
+                <span style={{ fontWeight: 600, color: '#10B981' }}>14 Days</span>
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <a
+                href="#contact"
+                onClick={() => reset()}
+                className="cta-main cta-main1"
+                style={{
+                  height: '50px',
+                  width: '100%',
+                  justifyContent: 'center',
+                  fontSize: '13px',
+                  background: '#0A0A0B',
+                  color: '#FFFFFF',
+                  borderRadius: '8px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  textDecoration: 'none'
+                }}
+              >
+                <span>Book My Operations Review</span>
+              </a>
+
+              <a
+                href="#products"
+                onClick={() => reset()}
+                style={{
+                  textAlign: 'center',
+                  fontSize: '12px',
+                  fontFamily: 'var(--font-mono)',
+                  color: '#71717A',
+                  padding: '8px',
+                  textDecoration: 'none'
+                }}
+              >
+                See what we build →
+              </a>
+            </div>
+          </div>
         )}
       </div>
     </div>

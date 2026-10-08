@@ -8,29 +8,36 @@ const steps = [
   {
     num: '01',
     title: 'Diagnose',
-    desc: 'We review your operations to see how data moves.',
+    desc: "We look at how work, data and decisions move today, and find what's slow, duplicated, manual or hard to track.",
   },
   {
     num: '02',
-    title: 'Decide fit',
-    desc: 'We decide if you need custom software or nothing at all.',
+    title: 'Decide what fits',
+    desc: 'Software, AI, automation, integration, a simpler process, or no build at all. We tell you honestly which one fits.',
   },
   {
     num: '03',
     title: 'Design the system',
-    desc: 'We design the architecture before writing any code.',
+    desc: 'We define the workflow, scope, data, roles and controls before any development begins.',
   },
   {
     num: '04',
-    title: 'Build & stay',
-    desc: 'We build and deploy the system for your team.',
+    title: 'Build and test',
+    desc: "We build it, test it against real workflows, review it with you, and fix what doesn't work in practice.",
+  },
+  {
+    num: '05',
+    title: 'Deploy and support',
+    desc: 'We launch the system, help your team adopt it, and stay available for the agreed support period.',
   },
 ];
 
-const protections = [
-  'Paying for bloated software.',
-  'Adding confusing apps.',
-  'Building unnecessary tools.',
+const deliverables = [
+  "A clear understanding of what's actually being solved.",
+  'A defined scope and implementation plan.',
+  'A tested system with clear criteria for what counts as done.',
+  'A documented handover, so you know who owns what.',
+  'A practical plan for support and future changes.',
 ];
 
 export default function ProcessSection() {
@@ -87,7 +94,7 @@ export default function ProcessSection() {
     >
       <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%', padding: '0 24px' }}>
         <p className="label diode pr" style={{ marginBottom: '14px', color: 'var(--mwg2-grey)', fontSize: '11px', letterSpacing: '0.06em' }}>
-          METHODOLOGY
+          HOW WE WORK
         </p>
 
         <div className="proc-head-container" style={{ marginBottom: '64px', maxWidth: '900px' }}>
@@ -99,7 +106,7 @@ export default function ProcessSection() {
             marginBottom: '16px',
             color: '#A1A1AA'
           }}>
-            An operational review comes before the proposal.
+            We review the operation before we propose anything.
           </p>
           
           <h2 className="proc-head-line" style={{ 
@@ -111,11 +118,11 @@ export default function ProcessSection() {
             color: '#0A0A0B',
             fontFamily: 'var(--font-grotesk)'
           }}>
-            <span style={{ textDecoration: 'line-through', color: '#A1A1AA' }}>Guesswork</span>, <span style={{ textDecoration: 'line-through', color: '#A1A1AA' }}>Assumptions</span>.<br/>We map your exact data flow first.
+            You bring the problem.<br/>We work out what the system should look like.
           </h2>
 
           <p className="proc-head-line" style={{ fontSize: '17px', color: '#52525B', maxWidth: '680px', lineHeight: 1.65, fontWeight: 400 }}>
-            This is what protects you from being sold automation when the real problem is process, or another tool when your stack is already bloated.
+            We won't recommend a tool before we understand the business. The process exists to cut out guesswork before development starts.
           </p>
         </div>
 
@@ -158,8 +165,8 @@ export default function ProcessSection() {
           className="proc-grid"
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '16px',
+            gridTemplateColumns: 'repeat(5, 1fr)',
+            gap: '14px',
             marginBottom: '48px',
           }}
         >
@@ -172,7 +179,7 @@ export default function ProcessSection() {
                 background: '#F4F4F5',
                 border: '1px solid #E4E4E7',
                 borderRadius: '14px',
-                padding: '28px 22px',
+                padding: '24px 18px',
                 transformStyle: 'preserve-3d',
                 display: 'flex',
                 flexDirection: 'column',
@@ -183,10 +190,10 @@ export default function ProcessSection() {
                 <div style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: 'var(--mwg2-grey)', marginBottom: '12px' }}>
                   STEP {s.num}
                 </div>
-                <h3 style={{ fontSize: '16px', fontWeight: 600, color: '#0A0A0B', marginBottom: '10px', lineHeight: 1.3 }}>
+                <h3 style={{ fontSize: '15px', fontWeight: 600, color: '#0A0A0B', marginBottom: '10px', lineHeight: 1.3 }}>
                   {s.title}
                 </h3>
-                <p style={{ fontSize: '13px', color: '#52525B', lineHeight: 1.55 }}>
+                <p style={{ fontSize: '12px', color: '#52525B', lineHeight: 1.55 }}>
                   {s.desc}
                 </p>
               </div>
@@ -194,7 +201,7 @@ export default function ProcessSection() {
           ))}
         </div>
 
-        {/* Protection Guarantee Strip */}
+        {/* Deliverables Banner */}
         <div
           style={{
             background: '#0A0A0B',
@@ -208,25 +215,25 @@ export default function ProcessSection() {
             gap: '20px',
           }}
         >
-          <div>
-            <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: '#A1A1AA', marginBottom: '6px', letterSpacing: '0.06em' }}>
-              WHAT OUR METHODOLOGY PROTECTS YOU FROM
+          <div style={{ width: '100%' }}>
+            <p style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: '#A1A1AA', marginBottom: '12px', letterSpacing: '0.06em' }}>
+              WHAT YOU GET AT THE END
             </p>
             <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-              {protections.map((p, i) => (
+              {deliverables.map((p, i) => (
                 <span
                   key={i}
                   style={{
                     fontSize: '12px',
-                    color: 'rgba(255,255,255,0.8)',
+                    color: 'rgba(255,255,255,0.9)',
                     background: '#18181B',
                     border: '1px solid #27272A',
-                    padding: '6px 12px',
+                    padding: '8px 14px',
                     borderRadius: '6px',
                     fontFamily: 'var(--font-mono)',
                   }}
                 >
-                  ✕ {p}
+                  ✓ {p}
                 </span>
               ))}
             </div>

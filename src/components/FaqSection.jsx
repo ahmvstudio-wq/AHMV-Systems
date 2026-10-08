@@ -6,24 +6,44 @@ gsap.registerPlugin(ScrollTrigger);
 
 const faqs = [
   {
-    q: 'Is this just another AI agency?',
-    a: 'No. Generic AI agencies sell chatbots and Zapier templates. We build the operating infrastructure underneath - connecting your leads, workflows, customer records, and internal tools into one system you own. AI is one tool inside that, not the whole pitch.',
+    q: 'Is AHMV just another AI agency?',
+    a: 'No. AI is one part of what we build. We start with your problem, then decide if the right answer is software, AI, automation, integration or something simpler.',
+  },
+  {
+    q: 'Do I need to know what system I need before I contact you?',
+    a: "No. That's our job. Tell us what's happening in the business and what you want to improve. We'll work out what the system should look like.",
   },
   {
     q: "What if I don't actually need AI?",
-    a: "Then we won't build it. Most businesses need clean data pipelines, automated follow-ups, and a centralized portal long before they need AI. We only implement what actually solves the bottleneck.",
+    a: "Then we won't sell you AI. If a normal piece of software or a process change is the better answer, that's what we'll recommend.",
   },
   {
-    q: 'How is this different from hiring an ops person or buying another SaaS tool?',
-    a: 'An ops hire takes months to train and manual SaaS tools still require human data entry. We build custom automated infrastructure that connects your tools and runs 24/7 without adding headcount or expensive per-seat software fees.',
+    q: 'Do you only work with certain industries?',
+    a: 'No. We build around the problem, not the industry. Our work spans sales, finance, operations, property, e-commerce and digital experiences.',
   },
   {
-    q: 'What does an engagement cost?',
-    a: 'Every project has a clear setup fee (typically AED 2,000–7,500 or regional equivalent) plus an ongoing retainer for support and maintenance. You get a transparent, fixed quote after the operations review.',
+    q: 'Can you work with the software we already have?',
+    a: 'Yes. Keeping a system that already works and connecting it to the rest of your stack is often better than replacing it.',
+  },
+  {
+    q: "Who owns the system once it's built?",
+    a: 'Ownership is agreed upfront in the contract. As a standard position, you own the code, the data and the business assets we build for you, subject to the final agreement and any third-party components.',
   },
   {
     q: 'How long does a build take?',
-    a: 'Most core systems are architected, tested, and deployed to your team within 14 days.',
+    a: 'It depends on the scope. Small, well-defined builds move fast. Larger systems need discovery, staged development, testing and a proper rollout.',
+  },
+  {
+    q: 'What does a project start with?',
+    a: 'An Operations Review or discovery call. We want to understand how things work today before recommending anything.',
+  },
+  {
+    q: 'Can you maintain the system after launch?',
+    a: "Yes. Support and ongoing maintenance can be included whenever it's needed.",
+  },
+  {
+    q: 'Do you guarantee sales results?',
+    a: 'We guarantee the work and the system we deliver. Results that depend on the market, your sales team, or how customers behave sit outside the system itself. Any performance guarantee has to be tied to specific, measurable terms we agree upfront.',
   },
 ];
 

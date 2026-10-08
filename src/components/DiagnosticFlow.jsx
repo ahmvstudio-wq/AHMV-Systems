@@ -5,82 +5,53 @@ import gsap from 'gsap';
 const questions = [
   {
     id: 'business-type',
-    question: 'What does your business do?',
+    question: 'What kind of business are you running?',
     options: [
       { label: 'B2B services', value: 'b2b', icon: '◈' },
       { label: 'B2C services', value: 'b2c', icon: '◇' },
       { label: 'E-commerce', value: 'ecommerce', icon: '⬡' },
-      { label: 'Real Estate', value: 'realestate', icon: '△' },
-      { label: 'Professional Services', value: 'services', icon: '□' },
-      { label: 'Agency', value: 'agency', icon: '○' },
+      { label: 'Real estate', value: 'realestate', icon: '△' },
+      { label: 'Professional services', value: 'services', icon: '□' },
+      { label: 'Other', value: 'other', icon: '○' },
     ],
   },
   {
     id: 'team-size',
-    question: 'Roughly how large is your team?',
+    question: 'How big is the team today?',
     options: [
-      { label: '1–5', value: '1-5', icon: '①' },
-      { label: '6–15', value: '6-15', icon: '②' },
-      { label: '16–50', value: '16-50', icon: '③' },
-      { label: '50+', value: '50+', icon: '④' },
+      { label: '1 to 10 people', value: '1-10', icon: '①' },
+      { label: '11 to 25', value: '11-25', icon: '②' },
+      { label: '26 to 50', value: '26-50', icon: '③' },
+      { label: '51 to 100', value: '51-100', icon: '④' },
+      { label: '101 to 250', value: '101-250', icon: '⑤' },
+      { label: '250+', value: '250+', icon: '⑥' },
     ],
   },
   {
     id: 'bottleneck',
-    question: 'What is your biggest operational problem right now?',
+    question: 'Where is the business losing the most time, money or opportunities?',
     options: [
-      { label: 'Too many leads are being lost', value: 'leads', icon: '↗' },
-      { label: 'Salespeople aren\'t productive enough', value: 'sales', icon: '⊕' },
-      { label: 'Customer information is scattered', value: 'retention', icon: '↺' },
-      { label: 'Too much work is done manually', value: 'ops', icon: '⚙' },
-      { label: 'Our existing tools don\'t work well together', value: 'ops', icon: '⬡' },
-      { label: 'We don\'t have clear visibility into the business', value: 'ops', icon: '👁' },
+      { label: 'Lead generation or follow-up', value: 'leads', icon: '↗' },
+      { label: 'Customer handling', value: 'retention', icon: '↺' },
+      { label: 'Internal operations', value: 'ops', icon: '⚙' },
+      { label: 'Finance or invoicing', value: 'finance', icon: '💳' },
+      { label: 'Manual data entry', value: 'data', icon: '📋' },
+      { label: 'Disconnected software', value: 'tools', icon: '⬡' },
+      { label: 'Digital growth', value: 'growth', icon: '⚡' },
+      { label: 'Not sure yet', value: 'unknown', icon: '?' },
     ],
   },
   {
-    id: 'work-location',
-    question: 'Where does most of your work currently happen?',
+    id: 'goal',
+    question: 'What are you trying to improve?',
     options: [
-      { label: 'WhatsApp / Phone calls', value: 'chat', icon: '💬' },
-      { label: 'Excel / Google Sheets', value: 'sheets', icon: '📊' },
-      { label: 'A CRM', value: 'crm', icon: '🗂' },
-      { label: 'Multiple different tools', value: 'multiple', icon: '🔄' },
-      { label: 'Mostly manual / offline', value: 'manual', icon: '📝' },
-      { label: 'Email', value: 'email', icon: '✉' },
-    ],
-  },
-  {
-    id: 'lead-flow',
-    question: 'What happens to a new lead after you receive it?',
-    options: [
-      { label: 'Someone handles it manually', value: 'manual', icon: '✋' },
-      { label: 'It is entered into a CRM', value: 'crm', icon: '💻' },
-      { label: 'It goes into a spreadsheet', value: 'sheet', icon: '📋' },
-      { label: 'We contact it immediately', value: 'fast', icon: '⚡' },
-      { label: 'It often gets forgotten', value: 'forgotten', icon: '🗑' },
-      { label: 'We don\'t have a fixed process', value: 'none', icon: '🤷' },
-    ],
-  },
-  {
-    id: 'repetitive',
-    question: 'How much of your team\'s work is repetitive?',
-    options: [
-      { label: 'Very little', value: 'little', icon: '1️⃣' },
-      { label: 'Some', value: 'some', icon: '2️⃣' },
-      { label: 'A lot', value: 'alot', icon: '3️⃣' },
-      { label: 'Most of our daily work is repetitive', value: 'most', icon: '4️⃣' },
-    ],
-  },
-  {
-    id: 'readiness',
-    question: 'What are you looking for right now?',
-    options: [
-      { label: 'I know exactly what needs fixing', value: 'exact', icon: '✓' },
-      { label: 'I know there is a problem but don\'t know the solution', value: 'unknown', icon: '?' },
-      { label: 'I want to automate an existing process', value: 'automate', icon: '⚙' },
-      { label: 'I want to build a new system', value: 'new', icon: '+' },
-      { label: 'I want someone to analyse our operations first', value: 'analyse', icon: '🔍' },
-      { label: 'Just exploring', value: 'explore', icon: '○' },
+      { label: 'More qualified opportunities', value: 'leads_goal', icon: '🎯' },
+      { label: 'Faster response and follow-up', value: 'speed_goal', icon: '⚡' },
+      { label: 'Less manual work', value: 'ops_goal', icon: '⚙' },
+      { label: 'Better visibility into operations', value: 'visibility_goal', icon: '👁' },
+      { label: 'Better financial control', value: 'finance_goal', icon: '📊' },
+      { label: 'A new digital system', value: 'system_goal', icon: '💻' },
+      { label: 'Something else', value: 'other_goal', icon: '○' },
     ],
   }
 ];
@@ -88,39 +59,40 @@ const questions = [
 // ── Result Mapping ──
 function getResult(answers) {
   const bottleneck = answers['bottleneck'];
-  const repetitive = answers['repetitive'];
 
   const results = {
     leads: {
-      title: 'You need a lead engine.',
-      subtitle: 'Your pipeline is dry — we build automated acquisition systems that bring qualified leads to you without cold outreach.',
-      system: 'Acquisition & Pipeline Systems',
-    },
-    sales: {
-      title: 'Your close rate is the bottleneck.',
-      subtitle: 'Leads aren\'t the problem — conversion is. We build sales infrastructure that turns conversations into contracts.',
-      system: 'Sales Operations Systems',
+      title: 'Based on your answers, an Operations Review is probably worth doing.',
+      subtitle: "We'll read your answers before the call, so we go straight to the actual problem instead of starting from zero.",
+      system: 'Applied AI & Acquisition Systems',
+      urgency: 'High leverage — lead decay compounds quickly.',
     },
     retention: {
-      title: 'You\'re leaking revenue.',
-      subtitle: 'Acquiring customers costs 5x more than keeping them. We build retention and support systems that stop the bleed.',
-      system: 'Customer Retention Systems',
+      title: 'Based on your answers, an Operations Review is probably worth doing.',
+      subtitle: "We'll read your answers before the call, so we go straight to the actual problem instead of starting from zero.",
+      system: 'Business Infrastructure & Client Portals',
+      urgency: 'Immediate — customer experience directly affects LTV.',
+    },
+    finance: {
+      title: 'Based on your answers, an Operations Review is probably worth doing.',
+      subtitle: "We'll read your answers before the call, so we go straight to the actual problem instead of starting from zero.",
+      system: 'Business Infrastructure (Finance ERP & Cash Flow)',
+      urgency: 'High — manual invoicing creates cash lag.',
     },
     ops: {
-      title: 'Your operations are running you.',
-      subtitle: 'When the founder is the system, nothing scales. We build the operational backbone so the business runs without you.',
-      system: 'Operations & Workflow Systems',
+      title: 'Based on your answers, an Operations Review is probably worth doing.',
+      subtitle: "We'll read your answers before the call, so we go straight to the actual problem instead of starting from zero.",
+      system: 'Business Infrastructure & Workflow Systems',
+      urgency: 'High priority — operational drag limits capacity.',
     },
   };
 
-  const base = results[bottleneck] || results.ops;
-
-  // Add urgency modifier based on time waste
-  const urgency = repetitive === 'alot' || repetitive === 'most'
-    ? 'High priority — you\'re losing significant time.'
-    : 'Moderate — but it compounds fast.';
-
-  return { ...base, urgency };
+  return results[bottleneck] || {
+    title: 'Based on your answers, an Operations Review is probably worth doing.',
+    subtitle: "We'll read your answers before the call, so we go straight to the actual problem instead of starting from zero.",
+    system: 'Business Infrastructure & Operations Engineering',
+    urgency: 'Recommended — structured diagnosis clarifies ROI.',
+  };
 }
 
 // ── Main Component ──
@@ -149,44 +121,44 @@ export default function DiagnosticFlow({ onComplete }) {
 
   // ── Animate Intro Sequence ──
   useEffect(() => {
-    if (phase === 'intro' && introTextRef.current) {
-      if (introStep < introTexts.length) {
-        const isMultiLine = Array.isArray(introTexts[introStep]);
-        const tl = gsap.timeline({
-          onComplete: () => {
-            if (introStep < introTexts.length - 1) {
-              setIntroStep(prev => prev + 1);
-            } else {
-              setPhase('welcome');
-            }
-          }
-        });
-        
-        if (isMultiLine) {
-          const lines = introTextRef.current.querySelectorAll('.intro-line');
-          gsap.set(introTextRef.current, { opacity: 1, filter: 'blur(0px)', scale: 1 });
-          
-          tl.fromTo(lines,
-            { opacity: 0, filter: 'blur(15px)', y: 20 },
-            { opacity: 1, filter: 'blur(0px)', y: 0, duration: 1.2, stagger: 0.9, ease: 'power2.out' }
-          )
-          .to(introTextRef.current, 
-            { opacity: 0, filter: 'blur(10px)', scale: 1.05, duration: 0.8, ease: 'power2.in', delay: 1.5 }
-          );
+    if (phase !== 'intro' || !introTextRef.current) return;
+
+    const el = introTextRef.current;
+    const isMultiLine = Array.isArray(introTexts[introStep]);
+    const tl = gsap.timeline({
+      onComplete: () => {
+        if (introStep < introTexts.length - 1) {
+          setIntroStep(prev => prev + 1);
         } else {
-          const inDuration = introStep === 0 ? 0.7 : 1.0;
-          const outDelay = introStep === 0 ? 1.2 : 1.8;
-          
-          tl.fromTo(introTextRef.current, 
-            { opacity: 0, filter: 'blur(15px)', scale: 0.95 },
-            { opacity: 1, filter: 'blur(0px)', scale: 1, duration: inDuration, ease: 'power2.out' }
-          )
-          .to(introTextRef.current, 
-            { opacity: 0, filter: 'blur(10px)', scale: 1.05, duration: 0.7, ease: 'power2.in', delay: outDelay }
-          );
+          setPhase('welcome');
         }
       }
+    });
+
+    if (isMultiLine) {
+      const lines = el.querySelectorAll('.intro-line');
+      gsap.set(el, { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1 });
+      
+      tl.fromTo(lines,
+        { opacity: 0, y: 24, filter: 'blur(16px)', scale: 0.96 },
+        { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1, duration: 1.3, stagger: 0.75, ease: 'power2.out' }
+      )
+      .to(el,
+        { opacity: 0, y: -16, filter: 'blur(14px)', scale: 1.03, duration: 0.9, ease: 'power2.inOut', delay: 1.8 }
+      );
+    } else {
+      tl.fromTo(el,
+        { opacity: 0, y: 18, filter: 'blur(12px)', scale: 0.96 },
+        { opacity: 1, y: 0, filter: 'blur(0px)', scale: 1, duration: 0.9, ease: 'power2.out' }
+      )
+      .to(el,
+        { opacity: 0, y: -14, filter: 'blur(12px)', scale: 1.03, duration: 0.8, ease: 'power2.in', delay: 1.5 }
+      );
     }
+
+    return () => {
+      tl.kill();
+    };
   }, [phase, introStep]);
 
   // ── Animate Welcome entrance ──
@@ -335,10 +307,14 @@ export default function DiagnosticFlow({ onComplete }) {
         {/* ── INTRO SCREEN ── */}
         {phase === 'intro' && (
           <div style={styles.introInner}>
-            <h2 ref={introTextRef} style={styles.introText}>
+            <h2 key={introStep} ref={introTextRef} style={styles.introText}>
               {Array.isArray(introTexts[introStep]) 
                 ? introTexts[introStep].map((line, i) => (
-                    <span key={i} className="intro-line" style={{ display: 'block', margin: '4px 0' }}>
+                    <span
+                      key={i}
+                      className="intro-line"
+                      style={{ display: 'block', margin: '4px 0', willChange: 'opacity, filter, transform' }}
+                    >
                       {line}
                     </span>
                   ))

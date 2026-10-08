@@ -5,10 +5,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const principles = [
-  { num: '01', title: 'Hands-on Engineering', desc: 'Every line of code and automation is built directly, never outsourced.' },
-  { num: '02', title: 'No Artificial Bloat', desc: 'We only build what directly moves the bottleneck - nothing superfluous.' },
-  { num: '03', title: 'Full IP & Data Ownership', desc: 'All code, databases, and assets remain 100% private to your company.' },
-  { num: '04', title: 'Long-term Support', desc: 'We train your team and stay available post-deployment to support your runtime.' },
+  { num: '01', title: 'Problem before technology', desc: "We don't start with a product and look for a reason to use it." },
+  { num: '02', title: 'Built around how you actually work', desc: 'The system follows your business, not the other way round.' },
+  { num: '03', title: 'AI when it helps, not by default', desc: "AI earns its place when it makes the work better. It isn't a requirement for every project." },
+  { num: '04', title: 'Built to run, not just built', desc: 'A finished system needs working processes and support behind it, not just code.' },
 ];
 
 export default function FounderSection() {
@@ -54,7 +54,7 @@ export default function FounderSection() {
             marginBottom: '16px',
             color: '#A1A1AA'
           }}>
-            You don't need another generic agency.
+            How we think about the work.
           </p>
           
           <h2 className="founder-head-line" style={{ 
@@ -66,11 +66,11 @@ export default function FounderSection() {
             color: '#0A0A0B',
             fontFamily: 'var(--font-grotesk)'
           }}>
-            You need a partner who understands <span style={{ textDecoration: 'line-through', color: '#A1A1AA' }}>marketing</span>, <span style={{ textDecoration: 'line-through', color: '#A1A1AA' }}>sales</span>, and pure operations.
+            Diagnose first. Then build what <span style={{ padding: '0 8px', background: '#0A0A0B', color: '#FFFFFF', borderRadius: '6px' }}>actually moves</span> the bottleneck.
           </h2>
 
           <p className="founder-head-line" style={{ fontSize: '17px', color: '#52525B', lineHeight: 1.65, maxWidth: '580px', marginBottom: '32px', fontWeight: 400 }}>
-            One rule: diagnose first, then decide whether you need AI, automation, or just a better process. Every system AHMV ships is built hands-on, not delegated to a subcontractor.
+            One rule: diagnose first, then decide whether you need AI, automation, or just a better process. Every system AHMV ships is built around how your business actually runs.
           </p>
         </div>
 

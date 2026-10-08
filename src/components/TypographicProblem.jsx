@@ -9,33 +9,41 @@ export default function TypographicProblem({ diagnosticData }) {
   
   const bottleneck = diagnosticData?.bottleneck || 'ops';
 
-  let line1 = "You are running a growing business.";
+  let line1 = "Growth exposes the gaps";
 
-  let line2 = "But underneath, it's held together by Google Sheets, WhatsApp, and memory.";
+  let line2 = "Your business is moving. The systems underneath it may not be keeping up.";
 
   let painPoints = [
-    "Leads are lost due to manual follow-up.",
-    "Fulfillment is chaotic.",
-    "Your team is stuck doing data entry."
+    "Leads arrive, but follow-up depends on someone remembering to do it.",
+    "People spend hours copying information between spreadsheets, inboxes and chat threads.",
+    "Managers have to ask for updates because there is no single place to see what's happening.",
+    "Your team works around the software instead of the software helping them work.",
+    "You keep adding new tools, but the process still feels disjointed."
   ];
 
   if (bottleneck === 'leads') {
     painPoints = [
+      "Leads arrive, but follow-up depends on someone remembering to do it.",
       "Your pipeline is dry and unpredictable.",
       "Cold outreach feels like a waste of time.",
-      "You rely entirely on referrals to survive."
+      "Managers have to ask for updates because there is no single place to see what's happening.",
+      "You keep adding new tools, but the process still feels disjointed."
     ];
   } else if (bottleneck === 'sales') {
     painPoints = [
-      "Leads fall through the cracks.",
-      "Follow-ups are manual and inconsistent.",
-      "Close rates are lower than they should be."
+      "Leads arrive, but follow-up depends on someone remembering to do it.",
+      "Leads fall through the cracks between inboxes and chat threads.",
+      "Follow-ups are manual, inconsistent, and slow.",
+      "Your team works around the software instead of the software helping them work.",
+      "You keep adding new tools, but the process still feels disjointed."
     ];
   } else if (bottleneck === 'retention') {
     painPoints = [
-      "Client onboarding is a mess.",
-      "Customer support takes up all your time.",
-      "You're losing clients faster than you acquire them."
+      "People spend hours copying information between spreadsheets, inboxes and chat threads.",
+      "Client onboarding and support requests get lost in threads.",
+      "Managers have to ask for updates because there is no single place to see what's happening.",
+      "Your team works around the software instead of the software helping them work.",
+      "You keep adding new tools, but the process still feels disjointed."
     ];
   }
   
@@ -60,7 +68,7 @@ export default function TypographicProblem({ diagnosticData }) {
       },
       once: true
     });
-  }, [bottleneck]); // re-run animation setup if data changes (though it shouldn't once loaded)
+  }, [bottleneck]);
 
   return (
     <section 
@@ -95,13 +103,14 @@ export default function TypographicProblem({ diagnosticData }) {
           marginBottom: '64px',
           color: '#0A0A0B'
         }}>
-          But underneath, it's held together by <span style={{ textDecoration: 'line-through', color: '#A1A1AA' }}>Google Sheets</span>, <span style={{ textDecoration: 'line-through', color: '#A1A1AA' }}>WhatsApp</span>, and memory.
+          {line2}
         </p>
         
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '80px' }}>
           {painPoints.map((point, index) => (
-            <p key={index} className="typo-line" style={{ fontSize: 'clamp(20px, 3vw, 32px)', fontWeight: 400, color: '#52525B', margin: 0, letterSpacing: '-0.02em' }}>
-              {point}
+            <p key={index} className="typo-line" style={{ fontSize: 'clamp(18px, 2.6vw, 28px)', fontWeight: 400, color: '#52525B', margin: 0, letterSpacing: '-0.02em', display: 'flex', alignItems: 'baseline', gap: '12px' }}>
+              <span style={{ color: '#A1A1AA', fontSize: '14px' }}>•</span>
+              <span>{point}</span>
             </p>
           ))}
         </div>
@@ -114,8 +123,8 @@ export default function TypographicProblem({ diagnosticData }) {
           margin: 0,
           color: '#0A0A0B'
         }}>
-          This is <span style={{ fontStyle: 'italic' }}>not</span> a hiring problem.<br/>
-          It is an <span style={{ padding: '0 8px', background: '#0A0A0B', color: '#FFFFFF', borderRadius: '6px' }}>engineering problem</span>.
+          Hiring more people fixes some of this.<br/>
+          It <span style={{ fontStyle: 'italic' }}>doesn't fix</span> a <span style={{ padding: '0 8px', background: '#0A0A0B', color: '#FFFFFF', borderRadius: '6px' }}>broken system</span>.
         </p>
         
       </div>

@@ -108,7 +108,18 @@ export default function HeroSection({ onOpenAudit, diagnosticData }) {
             <span style={{ display: 'block', color: '#71717A', whiteSpace: 'nowrap' }}>Systems do.</span>
           </h2>
 
-
+          <p
+            ref={subRef}
+            style={{
+              fontSize: '16px',
+              lineHeight: 1.6,
+              color: '#52525B',
+              marginBottom: '32px',
+              maxWidth: '520px',
+            }}
+          >
+            We build the systems that make growing businesses easier to run. Business infrastructure, AI, websites and custom software. We start with how your business works today and build from there.
+          </p>
 
           <div
             ref={ctaRef}

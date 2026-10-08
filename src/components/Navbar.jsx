@@ -58,6 +58,7 @@ export default function Navbar({ onOpenAudit }) {
             <li><a href="/#process">PROCESS</a></li>
             <li><a href="/#pricing">PRICING</a></li>
             <li><a href="/#faq">FAQ</a></li>
+            <li><Link to="/apps" style={{ color: '#0A0A0B', fontWeight: 700 }}>APPS</Link></li>
           </ul>
         </nav>
 
@@ -281,6 +282,7 @@ export default function Navbar({ onOpenAudit }) {
           <li><a href="/#process" onClick={() => setMobileMenuOpen(false)}>PROCESS</a></li>
           <li><a href="/#pricing" onClick={() => setMobileMenuOpen(false)}>PRICING</a></li>
           <li><a href="/#faq" onClick={() => setMobileMenuOpen(false)}>FAQ</a></li>
+          <li><Link to="/apps" onClick={() => setMobileMenuOpen(false)} style={{ fontWeight: 700 }}>ENTERPRISE APPS (CRM / INTAKE / ERP)</Link></li>
           <li><a href="/#contact" onClick={() => setMobileMenuOpen(false)}>BOOK OPERATIONS REVIEW</a></li>
         </ul>
 

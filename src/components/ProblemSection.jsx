@@ -5,10 +5,11 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 gsap.registerPlugin(ScrollTrigger);
 
 const comparisons = [
-  { problem: 'Leads go cold in DMs & chats', system: 'Automated CRM booking' },
-  { problem: 'Support runs on memory', system: 'Centralized client portal' },
-  { problem: 'Books stay a mystery until month-end', system: 'Automated cash flow tracking' },
-  { problem: 'Five tools, zero connection', system: 'One unified operating system' },
+  { problem: 'Leads get lost in DMs, inboxes and spreadsheets', system: 'One workflow captures, qualifies and follows up on every lead' },
+  { problem: 'Teams keep asking each other for the same information', system: 'Everyone works from one reliable source of truth' },
+  { problem: 'Finance only becomes clear at month end', system: 'Financial information is visible in real time' },
+  { problem: 'Several tools handle one job badly', system: 'The unnecessary handoffs get connected or removed' },
+  { problem: 'A process only works because one person knows how to do it', system: 'The process becomes repeatable, not personal' },
 ];
 
 const stats = [
@@ -237,8 +238,8 @@ export default function ProblemSection() {
                 willChange: 'clip-path',
               }}
             >
-              Every one of these is a system problem, <br />
-              <span style={{ color: 'rgba(255,255,255,0.6)' }}>not a hiring problem.</span>
+              The problem usually isn't your people. <br />
+              <span style={{ color: 'rgba(255,255,255,0.6)' }}>It's the system they've been asked to work inside.</span>
             </h2>
 
             <p

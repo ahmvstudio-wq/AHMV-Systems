@@ -115,23 +115,22 @@ export default function ProductsSection({ onOpenAudit }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '24px' }}>
               <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#FFFFFF' }} />
               <span style={{ fontSize: '11px', fontFamily: 'var(--font-mono)', color: '#A1A1AA', letterSpacing: '0.07em', textTransform: 'uppercase', fontWeight: 600 }}>
-                OPERATING SYSTEMS
+                WHAT WE BUILD
               </span>
             </div>
 
-            <h2 ref={titleRef} style={{ fontSize: 'clamp(48px, 6vw, 84px)', fontWeight: 400, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: '40px' }}>
-              <div style={{ overflow: 'hidden' }}><div className="line-inner">We replace</div></div>
-              <div style={{ overflow: 'hidden' }}><div className="line-inner">fragmented tools</div></div>
-              <div style={{ overflow: 'hidden' }}><div className="line-inner">with a single</div></div>
-              <div style={{ overflow: 'hidden' }}><div className="line-inner" style={{ color: '#52525B' }}>command center.</div></div>
+            <h2 ref={titleRef} style={{ fontSize: 'clamp(44px, 5.5vw, 76px)', fontWeight: 400, letterSpacing: '-0.04em', lineHeight: 1.05, marginBottom: '40px' }}>
+              <div style={{ overflow: 'hidden' }}><div className="line-inner">We work</div></div>
+              <div style={{ overflow: 'hidden' }}><div className="line-inner">across four</div></div>
+              <div style={{ overflow: 'hidden' }}><div className="line-inner" style={{ color: '#52525B' }}>core areas.</div></div>
             </h2>
 
             <div ref={descRef} style={{ maxWidth: '480px' }}>
-              <p style={{ fontSize: '20px', color: '#A1A1AA', lineHeight: 1.6, marginBottom: '24px' }}>
-                Instead of selling isolated software subscriptions, we engineer complete, custom-built operational systems for your business.
+              <p style={{ fontSize: '19px', color: '#A1A1AA', lineHeight: 1.6, marginBottom: '20px' }}>
+                The area tells you roughly where the problem sits. What we actually build is decided once we understand your business.
               </p>
-              <p style={{ fontSize: '16px', color: '#52525B', lineHeight: 1.6, marginBottom: '48px' }}>
-                Every system is deployed securely on your private cloud, integrating your existing workflows into a unified, high-performance architecture. You own the code. You own the data.
+              <p style={{ fontSize: '15px', color: '#71717A', lineHeight: 1.6, marginBottom: '44px' }}>
+                Business Infrastructure, Applied AI, Digital Growth, and Bespoke Engineering. We start with how your business works today and build the smallest system that solves the real bottleneck.
               </p>
               
               <button

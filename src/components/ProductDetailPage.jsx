@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { products } from '../data/productsData';
@@ -8,11 +8,23 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function ProductDetailPage() {
   const { productId } = useParams();
+  const navigate = useNavigate();
   const product = products.find((p) => p.id === productId);
   const heroRef = useRef(null);
 
+  const handleBack = (e) => {
+    e.preventDefault();
+    if (window.history.length > 1) {
+      navigate(-1);
+    } else {
+      navigate('/');
+    }
+  };
+
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
   }, [productId]);
 
   if (!product) {
@@ -40,18 +52,18 @@ export default function ProductDetailPage() {
       <nav style={{ padding: '20px 32px', borderBottom: '1px solid #E4E4E7', position: 'sticky', top: 0, background: 'rgba(255, 255, 255, 0.95)', backdropFilter: 'blur(12px)', zIndex: 100 }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <a href="/" onClick={handleBack} style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', cursor: 'pointer' }}>
               <img
                 src="/logo.png.png"
                 onError={(e) => { e.currentTarget.src = '/logo.png'; }}
                 alt="AHMV Systems"
                 style={{ height: '40px', width: 'auto', display: 'block' }}
               />
-            </Link>
+            </a>
             <span style={{ color: '#E4E4E7' }}>/</span>
-            <Link to="/#products" style={{ fontSize: '13px', color: '#71717A', textDecoration: 'none', fontFamily: 'var(--font-mono)' }}>
-              Products
-            </Link>
+            <a href="/#products" onClick={handleBack} style={{ fontSize: '13px', color: '#71717A', textDecoration: 'none', fontFamily: 'var(--font-mono)', cursor: 'pointer' }}>
+              Work
+            </a>
             <span style={{ color: '#E4E4E7' }}>/</span>
             <span style={{ fontSize: '13px', color: '#0A0A0B', fontWeight: 600, fontFamily: 'var(--font-mono)' }}>
               {product.title}

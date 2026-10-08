@@ -18,6 +18,14 @@ import DiagnosticAuditModal from './components/DiagnosticAuditModal';
 import ServicePageRouter from './components/ServicePages';
 import BubbleCursor from './components/BubbleCursor';
 import DiagnosticFlow from './components/DiagnosticFlow';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+
+// ── 3 Independent Enterprise Software Suites ──
+import AppLauncher from './apps/AppLauncher';
+import CrmApp from './apps/crm/CrmApp';
+import AdminIntakeApp from './apps/admin-intake/AdminIntakeApp';
+import AccountingErpApp from './apps/accounting-erp/AccountingErpApp';
 
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -29,6 +37,12 @@ function HomePage({ diagnosticData }) {
   const [auditModalOpen, setAuditModalOpen] = useState(false);
 
   useEffect(() => {
+    document.title = 'AHMV — AI-Native Business Systems';
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', 'AHMV builds AI-native business systems including ERP/CRM platforms, AI agents, workflow automation, internal tools, and SaaS products.');
+    }
+
     bootAnimations();
 
     gsap.registerPlugin(ScrollTrigger);
@@ -130,7 +144,12 @@ function ServiceRoute() {
 }
 
 // ── Scroll Management ──
-const scrollPositions = {};
+if (typeof window !== 'undefined' && 'scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
+const scrollPositions = { '/': 0 };
+let lastHomeScroll = 0;
 
 function ScrollManager() {
   const { pathname } = useLocation();
@@ -139,54 +158,112 @@ function ScrollManager() {
   // Save scroll position continuously for the current path
   useEffect(() => {
     const handleScroll = () => {
-      scrollPositions[pathname] = window.scrollY;
+      const y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || 0;
+      scrollPositions[pathname] = y;
+      if (pathname === '/') {
+        lastHomeScroll = y;
+      }
     };
+
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [pathname]);
 
   // Restore or reset scroll on navigation
   useEffect(() => {
-    // If user clicks browser back, OR if they navigate back to home, restore position.
-    if (navType === 'POP' || pathname === '/') {
-      const savedPosition = scrollPositions[pathname] || 0;
-      setTimeout(() => window.scrollTo(0, savedPosition), 10);
-      setTimeout(() => window.scrollTo(0, savedPosition), 150); // Fallback after render
+    if (pathname === '/') {
+      // Returning to homepage: restore exact scroll position
+      const savedPosition = scrollPositions['/'] ?? lastHomeScroll ?? 0;
+      
+      const restoreScroll = () => {
+        window.scrollTo({ top: savedPosition, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = savedPosition;
+        document.body.scrollTop = savedPosition;
+        if (ScrollTrigger) {
+          ScrollTrigger.refresh();
+        }
+      };
+
+      restoreScroll();
+      requestAnimationFrame(restoreScroll);
+      const t1 = setTimeout(restoreScroll, 20);
+      const t2 = setTimeout(restoreScroll, 80);
+      const t3 = setTimeout(restoreScroll, 200);
+      const t4 = setTimeout(restoreScroll, 400);
+
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+        clearTimeout(t4);
+      };
     } else {
-      // Navigating to a new page (e.g. a service page) goes to the absolute top
-      setTimeout(() => window.scrollTo(0, 0), 10);
+      // Navigating to any app, service or detail page: ALWAYS start at absolute top (0, 0)
+      const resetToTop = () => {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      };
+
+      resetToTop();
+      requestAnimationFrame(resetToTop);
+      const t1 = setTimeout(resetToTop, 10);
+      const t2 = setTimeout(resetToTop, 50);
+      const t3 = setTimeout(resetToTop, 150);
+
+      return () => {
+        clearTimeout(t1);
+        clearTimeout(t2);
+        clearTimeout(t3);
+      };
     }
   }, [pathname, navType]);
 
   return null;
 }
 
-// ── Root ──
-export default function App() {
+// ── App Content Switcher with Direct Route Loading ──
+function AppContent() {
   const [diagnosticData, setDiagnosticData] = useState(null);
-  const [diagnosticComplete, setDiagnosticComplete] = useState(false);
 
   const handleDiagnosticComplete = (data) => {
     if (data) {
       setDiagnosticData(data);
     }
-    setDiagnosticComplete(true);
   };
 
   return (
-    <BrowserRouter>
+    <>
       <ScrollManager />
       <BubbleCursor />
-      
-      {!diagnosticComplete ? (
-        <DiagnosticFlow onComplete={handleDiagnosticComplete} />
-      ) : (
-        <Routes>
-          <Route path="/" element={<HomePage diagnosticData={diagnosticData} />} />
-          <Route path="/products/:productId" element={<ProductDetailPage />} />
-          <Route path="/services/:serviceId" element={<ServiceRoute />} />
-        </Routes>
-      )}
+
+      <Routes>
+        {/* Main Website Routes */}
+        <Route path="/" element={<HomePage diagnosticData={diagnosticData} />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/terms-of-service" element={<TermsOfService />} />
+        <Route path="/diagnostic" element={<DiagnosticFlow onComplete={handleDiagnosticComplete} />} />
+        <Route path="/products/:productId" element={<ProductDetailPage />} />
+        <Route path="/services/:serviceId" element={<ServiceRoute />} />
+
+        {/* 3 Enterprise Software Applications */}
+        <Route path="/apps" element={<AppLauncher />} />
+        <Route path="/crm" element={<CrmApp />} />
+        <Route path="/apps/crm" element={<CrmApp />} />
+        <Route path="/admin" element={<AdminIntakeApp />} />
+        <Route path="/apps/admin" element={<AdminIntakeApp />} />
+        <Route path="/accounting" element={<AccountingErpApp />} />
+        <Route path="/apps/accounting" element={<AccountingErpApp />} />
+      </Routes>
+    </>
+  );
+}
+
+// ── Root ──
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
     </BrowserRouter>
   );
 }
