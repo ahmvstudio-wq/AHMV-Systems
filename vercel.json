@@ -1,5 +1,10 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/((?!privacy-policy|terms-of-service|robots\\.txt|sitemap\\.xml|assets/).*)",
+      "destination": "/index.html"
+    }
   ]
 }
