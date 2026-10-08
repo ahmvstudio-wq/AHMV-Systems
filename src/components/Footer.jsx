@@ -220,14 +220,16 @@ export default function Footer() {
       <div style={{ maxWidth: '1200px', margin: '40px auto 0', borderTop: '1px solid #F4F4F5', paddingTop: '24px', paddingLeft: '24px', paddingRight: '24px', display: 'flex', flexDirection: 'column', gap: '12px', fontSize: '12px', color: '#A1A1AA', fontFamily: 'var(--font-mono)' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', alignItems: 'center' }}>
           <p>© 2026 AHMV. All rights reserved.</p>
-          <div style={{ display: 'flex', gap: '16px' }}>
+          <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
+            <a href="mailto:cultlike@ahmv.si" style={{ color: '#71717A', textDecoration: 'none' }}>cultlike@ahmv.si</a>
+            <span style={{ color: '#E4E4E7' }}>•</span>
             <Link to="/privacy-policy" style={{ color: '#71717A', textDecoration: 'none' }}>Privacy Policy</Link>
             <span style={{ color: '#E4E4E7' }}>•</span>
             <Link to="/terms-of-service" style={{ color: '#71717A', textDecoration: 'none' }}>Terms of Service</Link>
           </div>
         </div>
         <p style={{ fontSize: '11px', color: '#A1A1AA', lineHeight: 1.5, maxWidth: '800px' }}>
-          AHMV is an AI-native business systems and technology sole proprietorship registered in Bengaluru, Karnataka, India (established January 2026). Products and platforms developed by AHMV include Cultlike, Focus, and custom enterprise operational software.
+          AHMV is an AI-native business systems and technology sole proprietorship registered in Bengaluru, Karnataka, India (established January 2026). Contact: cultlike@ahmv.si
         </p>
       </div>
 

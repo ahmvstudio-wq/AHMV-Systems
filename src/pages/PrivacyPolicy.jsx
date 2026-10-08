@@ -51,7 +51,7 @@ export default function PrivacyPolicy() {
               1. Overview & Scope
             </h2>
             <p style={{ marginBottom: '12px' }}>
-              This Privacy Policy describes how <strong>AHMV</strong> ("AHMV", "we", "us", or "our"), a sole proprietorship established in January 2026 and located in Bengaluru, Karnataka, India, collects, uses, processes, and protects your personal information when you visit our website at <a href="https://ahmv.si" style={{ color: '#0A0A0B', textDecoration: 'underline' }}>https://ahmv.si</a>, use our products and platforms (including <strong>Cultlike</strong>, <strong>Focus</strong>, and custom enterprise applications), or engage with our software engineering and operational services.
+              This Privacy Policy describes how <strong>AHMV</strong> ("AHMV", "we", "us", or "our"), a sole proprietorship established in January 2026 and located in Bengaluru, Karnataka, India, collects, uses, processes, and protects your personal information when you visit our website at <a href="https://ahmv.si" style={{ color: '#0A0A0B', textDecoration: 'underline' }}>https://ahmv.si</a>, use our software products and platforms, or engage with our software engineering and operational services.
             </p>
             <p>
               We are committed to respecting your privacy and ensuring transparency in all our data handling practices.
@@ -88,7 +88,7 @@ export default function PrivacyPolicy() {
             <ul style={{ paddingLeft: '20px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
               <li>Providing, deploying, and maintaining AI-native business systems, ERP/CRM platforms, and workflow automation software.</li>
               <li>Evaluating and responding to diagnostic audit requests, consultation inquiries, and customer support communications.</li>
-              <li>Developing and improving our proprietary platforms and tools, including Cultlike and Focus.</li>
+              <li>Developing and improving our proprietary platforms, tools, and SaaS solutions.</li>
               <li>Protecting the security, integrity, and operational availability of our website and infrastructure.</li>
               <li>Complying with applicable legal, regulatory, and tax obligations under the laws of India.</li>
             </ul>
@@ -147,8 +147,8 @@ export default function PrivacyPolicy() {
               <div><strong>Legal Structure:</strong> Sole Proprietorship</div>
               <div><strong>Founded:</strong> January 2026</div>
               <div><strong>Location:</strong> Bengaluru, Karnataka, India</div>
+              <div><strong>Official Email:</strong> <a href="mailto:cultlike@ahmv.si" style={{ color: '#0A0A0B' }}>cultlike@ahmv.si</a></div>
               <div><strong>Website:</strong> <a href="https://ahmv.si" style={{ color: '#0A0A0B' }}>https://ahmv.si</a></div>
-              <div><strong>Inquiries:</strong> Contact via <a href="/#contact" style={{ color: '#0A0A0B' }}>Operations Review Form</a> or email</div>
             </div>
           </section>
 

@@ -54,7 +54,7 @@ export default function TermsOfService() {
               These Terms of Service ("Terms") constitute a legally binding agreement between you or the entity you represent ("Client", "User", or "you") and <strong>AHMV</strong> ("AHMV", "we", "us", or "our"), a sole proprietorship registered in January 2026 and based in Bengaluru, Karnataka, India.
             </p>
             <p>
-              By accessing or using our website (<a href="https://ahmv.si" style={{ color: '#0A0A0B', textDecoration: 'underline' }}>https://ahmv.si</a>), our software platforms (including <strong>Cultlike</strong>, <strong>Focus</strong>, and custom business suites), or any engineering services provided by AHMV, you agree to be bound by these Terms.
+              By accessing or using our website (<a href="https://ahmv.si" style={{ color: '#0A0A0B', textDecoration: 'underline' }}>https://ahmv.si</a>), our software platforms, or any engineering services provided by AHMV, you agree to be bound by these Terms.
             </p>
           </section>
 
@@ -82,7 +82,7 @@ export default function TermsOfService() {
                 <strong>Client Deliverables:</strong> Upon full payment of agreed fees, the Client owns the custom deliverables, custom application code, and proprietary client business data produced specifically for the Client under an executed agreement.
               </li>
               <li>
-                <strong>AHMV Background IP & Platforms:</strong> AHMV retains all rights, title, and interest in and to its pre-existing codebases, core framework architectures, modular system templates, pre-engineered building blocks, and proprietary SaaS platforms (including Cultlike and Focus).
+                <strong>AHMV Background IP & Platforms:</strong> AHMV retains all rights, title, and interest in and to its pre-existing codebases, core framework architectures, modular system templates, pre-engineered building blocks, and proprietary SaaS platforms.
               </li>
               <li>
                 <strong>Third-Party Components:</strong> Any third-party software, open-source libraries, or external APIs integrated into a project remain subject to their respective licenses.
@@ -143,8 +143,8 @@ export default function TermsOfService() {
               <div><strong>Legal Structure:</strong> Sole Proprietorship</div>
               <div><strong>Founded:</strong> January 2026</div>
               <div><strong>Location:</strong> Bengaluru, Karnataka, India</div>
+              <div><strong>Official Email:</strong> <a href="mailto:cultlike@ahmv.si" style={{ color: '#0A0A0B' }}>cultlike@ahmv.si</a></div>
               <div><strong>Website:</strong> <a href="https://ahmv.si" style={{ color: '#0A0A0B' }}>https://ahmv.si</a></div>
-              <div><strong>Inquiries:</strong> Contact via <a href="/#contact" style={{ color: '#0A0A0B' }}>Operations Review Form</a> or email</div>
             </div>
           </section>
 
